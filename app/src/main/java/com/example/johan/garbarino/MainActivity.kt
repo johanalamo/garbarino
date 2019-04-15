@@ -6,10 +6,11 @@ import okhttp3.*
 import java.io.IOException
 import android.widget.Toast
 import android.os.SystemClock
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.AttributeSet
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 data class Lista(val items: Array<Product>)
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
-      setContentView(R.layout.activity_main)
+      setContentView(R.layout.layout_main_activity)
       getListProducts()
    }
 
@@ -32,24 +33,15 @@ class MainActivity : AppCompatActivity() {
       val client = OkHttpClient()
       val request = Request.Builder().url(Data.listUrl).build()
       var z: Callback = object : Callback {
-
-
          override fun onFailure(call: Call, e: IOException) {
-            runOnUiThread {         
-               println("error");
-            }
+               println("error recovering data from server garbarino");
          }
          override fun onResponse(call: Call, response: Response) {
-
-
-
-
             Data.listReady = true
             Data.listData = response.body()?.string()
             val gson = Gson()
             val productList : Lista = gson.fromJson(Data.listData, Lista::class.java)
             Data.listDataArray = productList.items
-            
          }
       }
       client.newCall(request).enqueue(z)
@@ -59,8 +51,7 @@ class MainActivity : AppCompatActivity() {
 
    fun checkListProducts(){
       if (Data.listReady){
-         var d:Array<String> = arrayOf("string uno", "dos", "tres" , "varios" , "cuatro")
-         createRecyclerView(d, Data.listDataArray)
+         createRecyclerView(Data.listDataArray)
 //         showOnUI(Data.listDataArray)
       }else{
          runOnUiThread {
@@ -79,10 +70,10 @@ class MainActivity : AppCompatActivity() {
       println(data)
    }
 
-   fun createRecyclerView(myDataset:Array<String>, data:Array<Product>){
+   fun createRecyclerView(data:Array<Product>){
       //  https://developer.android.com/guide/topics/ui/layout/recyclerview
-      viewManager = LinearLayoutManager(this)
-      viewAdapter = MyAdapter(myDataset, data)
+      viewManager = GridLayoutManager(this, 2)
+      viewAdapter = MyAdapter(data)
       recyclerView = findViewById <RecyclerView>(R.id.rviewProducts).apply {
          setHasFixedSize(true);
          layoutManager = viewManager
