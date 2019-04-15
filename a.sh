@@ -24,7 +24,8 @@ if [ $1 = "com" ]; then
             $normal;
             echo 
             echo "ERROR: ";
-            cat $log_file | head -40;
+            cat $log_file | head -20;
+            echo $fecha;
         fi
         first=0;
         sleep 1s;
@@ -51,8 +52,20 @@ if [ $1 = "run" ]; then
     exit;
 fi;
 if [ $1 = "start" ]; then
-    adb -d install "`pwd`/app/build/outputs/apk/debug/app-debug.apk" &&
+#    adb -d install "`pwd`/app/build/outputs/apk/debug/app-debug.apk" &&
     adb shell am start -n "${app}/${app}.MainActivity"  -a android.intent.action.MAIN -c android.intent.category.LAUNCHER;
+#    sleep 1s;
+    exit;
+fi;
+
+if [ $1 = "log" ]; then
+    p=`adb shell ps -A | grep ${app} | awk '{ print $2 }'`
+    echo "PID = $p"; 
+    if [ "$p" != "" ]; then
+      adb shell logcat --pid=$p | cut -c 32-   
+    else
+      echo "not opened";
+    fi;
     exit;
 fi;
 

@@ -8,4 +8,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="stlImgProductList">
+        <item name="android:src">@drawable/img_one_phone</item>
+        <item name="android:layout_height">@dimen/sizeImgProductList</item>
+        <item name="android:layout_width">@dimen/sizeImgProductList</item>
+    </style>
+
+    <style name="stlProductListDescription">
+    </style>
+    <style name="stlProductListPrice">
+    </style>
+    <style name="stlProductListPriceList">
+    </style>
+    <style name="stlProductListDiscount">
+    </style>
+
+
 </resources>
