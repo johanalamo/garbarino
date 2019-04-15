@@ -49,9 +49,16 @@ if [ $1 = "run" ]; then
     #anterior manejarla con $? 0->exito   otro-> fall{o
     adb shell am start -n "${app}/${app}.MainActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER;
     exit;
-
 fi;
-    
+if [ $1 = "start" ]; then
+    adb -d install "`pwd`/app/build/outputs/apk/debug/app-debug.apk" &&
+    adb shell am start -n "${app}/${app}.MainActivity"  -a android.intent.action.MAIN -c android.intent.category.LAUNCHER;
+    exit;
+fi;
+
+echo "unrecognized option";
+
+exit;
 adb install-multiple -r -t /home/johan/androidprojects/threeinline2/app/build/intermediates/split-apk/debug/dep/dependencies.apk /home/johan/androidprojects/threeinline2/app/build/intermediates/split-apk/debug/slices/slice_2.apk /home/johan/androidprojects/threeinline2/app/build/intermediates/split-apk/debug/slices/slice_9.apk /home/johan/androidprojects/threeinline2/app/build/intermediates/split-apk/debug/slices/slice_0.apk /home/johan/androidprojects/threeinline2/app/build/intermediates/split-apk/debug/slices/slice_1.apk /home/johan/androidprojects/threeinline2/app/build/intermediates/split-apk/debug/slices/slice_3.apk /home/johan/androidprojects/threeinline2/app/build/intermediates/split-apk/debug/slices/slice_4.apk /home/johan/androidprojects/threeinline2/app/build/intermediates/split-apk/debug/slices/slice_5.apk /home/johan/androidprojects/threeinline2/app/build/intermediates/split-apk/debug/slices/slice_7.apk /home/johan/androidprojects/threeinline2/app/build/intermediates/split-apk/debug/slices/slice_6.apk /home/johan/androidprojects/threeinline2/app/build/intermediates/split-apk/debug/slices/slice_8.apk /home/johan/androidprojects/threeinline2/app/build/intermediates/instant-run-apk/debug/app-debug.apk /home/johan/androidprojects/threeinline2/app/build/intermediates/resources/instant-run/debug/resources-debug.apk 
 adb shell am start -n "threeinline.alamo.com.threeinlinedos/threeinline.alamo.com.threeinline.MenuActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
 
