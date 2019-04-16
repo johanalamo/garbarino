@@ -16,10 +16,10 @@
 
     <dimen name="sizeWidthLineThin">1dp</dimen>
 
-    <dimen name="textSizeDescriptionInList">16sp</dimen>
-    <dimen name="textSizePriceInList">24sp</dimen>
-    <dimen name="textSizeListPriceInList">14sp</dimen>
-    <dimen name="textSizeDiscountInList">14sp</dimen>
+    <dimen name="textSizeDescriptionInList">18sp</dimen>
+    <dimen name="textSizePriceInList">26sp</dimen>
+    <dimen name="textSizeListPriceInList">18sp</dimen>
+    <dimen name="textSizeDiscountInList">18sp</dimen>
 
 
 
