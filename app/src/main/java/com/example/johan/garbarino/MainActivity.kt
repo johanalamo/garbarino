@@ -73,9 +73,9 @@ class MainActivity : AppCompatActivity() {
    fun createRecyclerView(data:Array<Product>){
       //  https://developer.android.com/guide/topics/ui/layout/recyclerview
       viewManager = GridLayoutManager(this, 2)
-      viewAdapter = MyAdapter(data)
+      viewAdapter = MyAdapter(data, this)
       recyclerView = findViewById <RecyclerView>(R.id.rviewProducts).apply {
-         setHasFixedSize(true);
+         setHasFixedSize(false);
          layoutManager = viewManager
          adapter = viewAdapter
       }

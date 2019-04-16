@@ -32,6 +32,7 @@
     <style name="stlProductListPrice">
         <item name="android:textSize">@dimen/textSizePriceInList</item>
         <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:textStyle">bold</item>
     </style>
     <style name="stlProductListPriceList">
         <item name="android:textSize">@dimen/textSizeListPriceInList</item>
@@ -41,6 +42,4 @@
         <item name="android:textSize">@dimen/textSizeDiscountInList</item>
         <item name="android:textColor">@android:color/holo_green_dark</item>
     </style>
-
-
 </resources>
