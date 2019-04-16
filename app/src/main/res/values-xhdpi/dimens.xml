@@ -5,11 +5,21 @@
 
 
 
-    <dimen name="threeSep">24dp</dimen>
+    <dimen name="zeroSep">0dp</dimen>
+    <dimen name="oneSep">2dp</dimen>
+    <dimen name="twoSep">4dp</dimen>
+    <dimen name="threeSep">8dp</dimen>
 
+    <dimen name="sizeShadow">2dp</dimen>
 
+    <dimen name="radioCornerItem">5dp</dimen>
 
+    <dimen name="sizeWidthLineThin">1dp</dimen>
 
+    <dimen name="textSizeDescriptionInList">16sp</dimen>
+    <dimen name="textSizePriceInList">24sp</dimen>
+    <dimen name="textSizeListPriceInList">14sp</dimen>
+    <dimen name="textSizeDiscountInList">14sp</dimen>
 
 
 
@@ -23,16 +33,11 @@
     <string name="nameFileDimens">XXXHDPI</string>
 
     <!-- sizes for radios of rounded corners  -->
-    <dimen name="radioCornerButton">15dp</dimen>
 
     <!-- with for differents lines -->
-    <dimen name="sizeWidthLineThin">1dp</dimen>
     <dimen name="sizeWidthLineThick">2dp</dimen>
 
     <!-- separators, used for margins and paddings -->
-    <dimen name="zeroSep">0dp</dimen>
-    <dimen name="oneSep">8dp</dimen>
-    <dimen name="twoSep">16dp</dimen>
 
     <dimen name="sizeMarginButton">@dimen/oneSep</dimen>
     <dimen name="sizePaddingButton">@dimen/oneSep</dimen>

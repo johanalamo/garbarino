@@ -3,4 +3,216 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!-- gray -->
+    <color name="colorGrayLight">#e0e0e0</color>
+    <color name="colorGray">#9e9e9e</color>
+    <color name="colorGrayDark">#616161</color>
+
+    <color name="colorGrayLightTransparency">#88e0e0e0</color>
+    <color name="colorGrayTransparency">#889e9e9e</color>
+    <color name="colorGrayDarkTransparency">#88616161</color>
+
+    <color name="colorShadow">@color/colorGray</color>
+
+
+    <color name="colorLine">@color/colorGray</color>
+
+
+
+
+    <!-- Generic colors  -->
+    <!-- always used -->
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhiteTransparency">#88ffffff</color>
+
+    <color name="colorBlack">#000000</color>
+    <color name="colorBlackTransparency">#88000000</color>
+
+    <!-- other colors -->
+    <!-- blue -->
+    <color name="colorBlueLight">#64b5f6</color>
+    <color name="colorBlue">#2196f3</color>
+    <color name="colorBlueDark">#1565c0</color>
+
+    <color name="colorBlueLightTransparency">#8864b5f6</color>
+    <color name="colorBlueTransparency">#bb2196f3</color>
+    <color name="colorBlueDarkTransparency">#bb1565c0</color>
+
+
+    <!-- not used, only for example -->
+    <!-- green -->
+    <color name="colorGreenLight">#81c784</color>
+    <color name="colorGreen">#4caf50</color>
+    <color name="colorGreenDark">#388e3c</color>
+
+    <color name="colorGreenLightTransparency">#8881c784</color>
+    <color name="colorGreenTransparency">#bb4caf50</color>
+    <color name="colorGreenDarkTransparency">#bb388e3c</color>
+
+
+    <!-- used in the app -->
+    <!-- THEME ONE  -->
+    <color name="colorOneLight">@color/colorBlueLight</color>
+    <color name="colorOne">@color/colorBlue</color>
+    <color name="colorOneDark">@color/colorBlueDark</color>
+    <color name="colorOneLightTransparency">@color/colorBlueLightTransparency</color>
+    <color name="colorOneTransparency">@color/colorBlueTransparency</color>
+    <color name="colorOneDarkTransparency">@color/colorBlueDarkTransparency</color>
+
+    <color name="colorTwoLight">@color/colorGrayLight</color>
+    <color name="colorTwo">@color/colorGray</color>
+    <color name="colorTwoDark">@color/colorGrayDark</color>
+    <color name="colorTwoLightTransparency">@color/colorGrayLightTransparency</color>
+    <color name="colorTwoDarkTransparency">@color/colorGrayDarkTransparency</color>
+    <color name="colorTwoTransparency">@color/colorGrayTransparency</color>
+
+
+    <color name="colorContrast">@color/colorWhite</color>
+    <color name="colorContrastTransparency">@color/colorWhiteTransparency</color>
+
+    <color name="colorText">@color/colorWhite</color>
+    <color name="colorTextAbout">@color/colorBlack</color>
+    <color name="colorTextHelp">@color/colorBlack</color>
+
+
+
+    <!-- THEME TWO
+    <color name="colorOneLight">@color/colorGreenLight</color>
+    <color name="colorOne">@color/colorGreen</color>
+    <color name="colorOneDark">@color/colorGreenDark</color>
+    <color name="colorOneLightTransparency">@color/colorGreenLightTransparency</color>
+    <color name="colorOneTransparency">@color/colorGreenTransparency</color>
+    <color name="colorOneDarkTransparency">@color/colorGreenDarkTransparency</color>
+
+    <color name="colorTwoLight">@color/colorBlueLight</color>
+    <color name="colorTwo">@color/colorBlue</color>
+    <color name="colorTwoDark">@color/colorBlueDark</color>
+    <color name="colorTwoLightTransparency">@color/colorBlueLightTransparency</color>
+    <color name="colorTwoTransparency">@color/colorBlueTransparency</color>
+    <color name="colorTwoDarkTransparency">@color/colorBlueDarkTransparency</color>
+
+
+    <color name="colorContrast">@color/colorBlack</color>
+    <color name="colorContrastTransparency">@color/colorBlackTransparency</color>
+
+    <color name="colorText">@color/colorWhite</color>
+
+    <color name="colorShadow">@color/colorContrastTransparency</color>
+    <color name="colorLine">@color/colorContrast</color>
+
+    -->
+
+
+
+<!-- OLD SECTION FOR OLD PROJECT -->
+<!-- OLD SECTION FOR OLD PROJECT -->
+<!-- OLD SECTION FOR OLD PROJECT -->
+<!-- OLD SECTION FOR OLD PROJECT -->
+    <!-- Generic colors  -->
+    <!-- always used -->
+    <color name="old_colorWhite">#ffffff</color>
+
+    <color name="old_colorBlack">#000000</color>
+    <color name="old_colorBlackTransparency">#88000000</color>
+
+    <!-- other colors -->
+    <!-- blue -->
+    <color name="old_colorBlueLight">#64b5f6</color>
+    <color name="old_colorBlue">#2196f3</color>
+    <color name="old_colorBlueDark">#1565c0</color>
+
+    <color name="old_colorBlueLightTransparency">#8864b5f6</color>
+    <color name="old_colorBlueTransparency">#bb2196f3</color>
+    <color name="old_colorBlueDarkTransparency">#bb1565c0</color>
+
+    <!-- gray -->
+    <color name="old_colorGrayLight">#e0e0e0</color>
+    <color name="old_colorGray">#9e9e9e</color>
+    <color name="old_colorGrayDark">#616161</color>
+
+    <color name="old_colorGrayLightTransparency">#88e0e0e0</color>
+    <color name="old_colorGrayTransparency">#889e9e9e</color>
+    <color name="old_colorGrayDarkTransparency">#88616161</color>
+
+    <!-- not used, only for example -->
+    <!-- green -->
+    <color name="old_colorGreenLight">#81c784</color>
+    <color name="old_colorGreen">#4caf50</color>
+    <color name="old_colorGreenDark">#388e3c</color>
+
+    <color name="old_colorGreenLightTransparency">#8881c784</color>
+    <color name="old_colorGreenTransparency">#bb4caf50</color>
+    <color name="old_colorGreenDarkTransparency">#bb388e3c</color>
+
+
+    <!-- used in the app -->
+    <!-- THEME ONE  -->
+    <color name="old_colorOneLight">@color/old_colorBlueLight</color>
+    <color name="old_colorOne">@color/old_colorBlue</color>
+    <color name="old_colorOneDark">@color/old_colorBlueDark</color>
+    <color name="old_colorOneLightTransparency">@color/old_colorBlueLightTransparency</color>
+    <color name="old_colorOneTransparency">@color/old_colorBlueTransparency</color>
+    <color name="old_colorOneDarkTransparency">@color/old_colorBlueDarkTransparency</color>
+
+    <color name="old_colorTwoLight">@color/old_colorGrayLight</color>
+    <color name="old_colorTwo">@color/old_colorGray</color>
+    <color name="old_colorTwoDark">@color/old_colorGrayDark</color>
+    <color name="old_colorTwoLightTransparency">@color/old_colorGrayLightTransparency</color>
+    <color name="old_colorTwoDarkTransparency">@color/old_colorGrayDarkTransparency</color>
+    <color name="old_colorTwoTransparency">@color/old_colorGrayTransparency</color>
+
+
+    <color name="old_colorContrast">@color/old_colorBlack</color>
+    <color name="old_colorContrastTransparency">@color/old_colorBlackTransparency</color>
+
+    <color name="old_colorText">@color/old_colorWhite</color>
+    <color name="old_colorTextAbout">@color/old_colorBlack</color>
+    <color name="old_colorTextHelp">@color/old_colorBlack</color>
+
+    <color name="old_colorShadow">@color/old_colorContrastTransparency</color>
+    <color name="old_colorLine">@color/old_colorContrast</color>
+
+
+    <!-- THEME TWO
+    <color name="colorOneLight">@color/colorGreenLight</color>
+    <color name="colorOne">@color/colorGreen</color>
+    <color name="colorOneDark">@color/colorGreenDark</color>
+    <color name="colorOneLightTransparency">@color/colorGreenLightTransparency</color>
+    <color name="colorOneTransparency">@color/colorGreenTransparency</color>
+    <color name="colorOneDarkTransparency">@color/colorGreenDarkTransparency</color>
+
+    <color name="colorTwoLight">@color/colorBlueLight</color>
+    <color name="colorTwo">@color/colorBlue</color>
+    <color name="colorTwoDark">@color/colorBlueDark</color>
+    <color name="colorTwoLightTransparency">@color/colorBlueLightTransparency</color>
+    <color name="colorTwoTransparency">@color/colorBlueTransparency</color>
+    <color name="colorTwoDarkTransparency">@color/colorBlueDarkTransparency</color>
+
+
+    <color name="colorContrast">@color/colorBlack</color>
+    <color name="colorContrastTransparency">@color/colorBlackTransparency</color>
+
+    <color name="colorText">@color/colorWhite</color>
+
+    <color name="colorShadow">@color/colorContrastTransparency</color>
+    <color name="colorLine">@color/colorContrast</color>
+
+    -->
+
+
+<!-- END OLD SECTION FOR OLD PROJECT -->
+<!-- END OLD SECTION FOR OLD PROJECT -->
+<!-- END OLD SECTION FOR OLD PROJECT -->
+<!-- END OLD SECTION FOR OLD PROJECT -->
+
+
+
 </resources>
+
+
+
+
+
+
+
