@@ -1,6 +1,7 @@
 package com.example.johan.garbarino
 
 import android.support.v7.widget.RecyclerView
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -34,8 +35,12 @@ class MyAdapter(private val data: Array<Product>) :
         holder.linearLyt.txtId.text           = data[position].id
         holder.linearLyt.txtDescription.text  = data[position].description
         holder.linearLyt.txtPrice.text        = "$ " + data[position].price.toString()
-        holder.linearLyt.txtListPrice.text    = "$ " + data[position].list_price.toString()
-        holder.linearLyt.txtDiscount.text     = data[position].discount.toString() + "% OFF"
+        if (data[position].discount == 0)
+            holder.linearLyt.lytDiscount.visibility = LinearLayout.GONE
+        else {
+            holder.linearLyt.txtListPrice.text = "$ " + data[position].list_price.toString()
+            holder.linearLyt.txtDiscount.text = data[position].discount.toString() + "% OFF"
+        }
         holder.linearLyt.setOnClickListener({
             println("Id presionado:  "  + data[position].id)
         })

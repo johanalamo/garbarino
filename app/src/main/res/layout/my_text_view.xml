@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-             xmlns:tools="http://schemas.android.com/tools"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:id="@+id/linearLayoutOneProduct"
-        android:orientation="vertical"
+                xmlns:tools="http://schemas.android.com/tools"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/linearLayoutOneProduct"
+                android:orientation="vertical"
+                style="@style/stlProductListItem"
 >
-    foto
-    descripcion
-    preciodescuento
-    precio lista   -    discount
     <ImageView
         android:id="@+id/imgProduct"
         android:layout_width="wrap_content"
@@ -24,36 +19,24 @@
             tools:layout_editor_absoluteY="246dp"
             tools:layout_editor_absoluteX="163dp"
             android:id="@+id/txtId"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
     />
     <TextView
             android:text="TextView"
             style="@style/stlProductListDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteY="246dp"
-            tools:layout_editor_absoluteX="163dp"
             android:id="@+id/txtDescription"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtId"
     />
     <TextView
             android:text="TextView"
             style="@style/stlProductListPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteY="246dp"
-            tools:layout_editor_absoluteX="163dp"
             android:id="@+id/txtPrice"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDescription"
     />
 
     <LinearLayout
+            android:id="@+id/lytDiscount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -63,12 +46,7 @@
                 style="@style/stlProductListPriceList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:layout_editor_absoluteY="246dp"
-                tools:layout_editor_absoluteX="163dp"
                 android:id="@+id/txtListPrice"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtId"
         />
         <Space
                 android:layout_width="@dimen/threeSep"
@@ -78,17 +56,7 @@
                 style="@style/stlProductListDiscount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:layout_editor_absoluteY="246dp"
-                tools:layout_editor_absoluteX="163dp"
                 android:id="@+id/txtDiscount"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtDescription"
         />
-
-
-
-
     </LinearLayout>
-    <Space android:layout_width="match_parent" android:layout_height="20dp"/>
 </LinearLayout>
