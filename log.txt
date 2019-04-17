@@ -1,10 +1,5 @@
 
-==mié abr 17 09:31:21 -03 2019=======
-
-> Configure project :app
-WARNING: Configuration 'compile' is obsolete and has been replaced with 'implementation' and 'api'.
-It will be removed at the end of 2018. For more information see: http://d.android.com/r/tools/update-dependency-configurations.html
-
+==mié abr 17 15:01:42 -03 2019=======
 > Task :app:preBuild UP-TO-DATE
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:compileDebugAidl NO-SOURCE

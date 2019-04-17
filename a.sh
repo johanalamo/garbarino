@@ -98,3 +98,5 @@ http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/8f1dcc0c42
 http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/62cb75e2fa
 http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/dfe199bd8c
 http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/f6f8b547a5
+
+https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&AppId=2e65127e909e178d0af311a81f39948c

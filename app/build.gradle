@@ -42,9 +42,13 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.1'
 
 
-    compile 'com.squareup.retrofit2:retrofit:2.0.2'
-    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
-    compile 'com.jakewharton:butterknife:8.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.0.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
+    implementation 'com.jakewharton:butterknife:8.1.0'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.0.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.0' 
+
 
 }
 
