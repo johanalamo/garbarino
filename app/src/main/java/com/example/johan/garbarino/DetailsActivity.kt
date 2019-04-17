@@ -36,32 +36,21 @@ class DetailsActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(ProductDataService::class.java)
-        val call = service.getProductData(AppId)
+        val call = service.getProductData()
         call.enqueue(object : Callback<ProductDataResponse> {
             override fun onResponse(call: Call<ProductDataResponse>, response: Response<ProductDataResponse>) {
                 if (response.code() == 200) {
                     val weatherResponse = response.body()!!
 
-                    val stringBuilder = "Country: " +
-                            weatherResponse.sys!!.country +
-                            "\n" +
-                            "Temperature: " +
-                            weatherResponse.main!!.temp +
-                            "\n" +
-                            "Temperature(Min): " +
-                            weatherResponse.main!!.temp_min +
-                            "\n" +
-                            "Temperature(Max): " +
-                            weatherResponse.main!!.temp_max +
-                            "\n" +
-                            "Humidity: " +
-                            weatherResponse.main!!.humidity +
-                            "\n" +
-                            "Pressure: " +
-                            weatherResponse.main!!.pressure +
-                            "\n" +
-                            "Name: " +
-                            weatherResponse.name!!
+/*                    val stringBuilder = "Country: " + weatherResponse.sys!!.country +"\n" +
+                            "Temperature: " +weatherResponse.main!!.temp +"\n" +
+                            "Temperature(Min): " + weatherResponse.main!!.temp_min + "\n" +
+                            "Temperature(Max): " + weatherResponse.main!!.temp_max + "\n" +
+                            "Humidity: " + weatherResponse.main!!.humidity + "\n" +
+                            "Pressure: " + weatherResponse.main!!.pressure + "\n" +
+                            "Name: " + weatherResponse.name!!
+*/
+                    val stringBuilder = "Description: " + weatherResponse.description!!
 
                     txtProductData!!.text = stringBuilder
                 }
@@ -74,7 +63,11 @@ class DetailsActivity : AppCompatActivity() {
     }
     companion object {
 
-        var BaseUrl = "http://api.openweathermap.org/"
+//        var BaseUrl = "http://api.openweathermap.org/"
+        var BaseUrl = "http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/0982a08485/"
+
         var AppId = "2e65127e909e178d0af311a81f39948c"
+        var lat = "35"
+        var lon = "139"
     }
 }

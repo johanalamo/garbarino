@@ -6,12 +6,12 @@ class ProductDataResponse {
 
 //    @SerializedName("coord")
 //    var coord: Coord? = null
-    @SerializedName("sys")
-    var sys: Sys? = null
+//    @SerializedName("sys")
+//    var sys: Sys? = null
 //    @SerializedName("weather")
 //    var weather = ArrayList<Weather>()
-    @SerializedName("main")
-    var main: Main? = null
+//    @SerializedName("main")
+//    var main: Main? = null
 //    @SerializedName("wind")
 //    var wind: Wind? = null
 //    @SerializedName("rain")
@@ -22,10 +22,13 @@ class ProductDataResponse {
 //    var dt: Float = 0.toFloat()
 //    @SerializedName("id")
 //    var id: Int = 0
-    @SerializedName("name")
-    var name: String? = null
+//    @SerializedName("name")
+//    var name: String? = null
 //    @SerializedName("cod")
 //    var cod: Float = 0.toFloat()
+    @SerializedName("description")
+    var description: String? = null
+
 }
 
 class Weather {
