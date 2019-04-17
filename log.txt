@@ -1,0 +1,45 @@
+
+==mar abr 16 22:22:54 -03 2019=======
+Starting a Gradle Daemon, 1 incompatible and 1 stopped Daemons could not be reused, use --status for details
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild
+> Task :app:compileDebugAidl NO-SOURCE
+> Task :app:compileDebugRenderscript
+> Task :app:checkDebugManifest
+> Task :app:generateDebugBuildConfig
+> Task :app:mainApkListPersistenceDebug
+> Task :app:generateDebugResValues
+> Task :app:generateDebugResources
+> Task :app:mergeDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:processDebugManifest
+> Task :app:processDebugResources
+
+> Task :app:compileDebugKotlin
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/DetailsActivity.kt: (14, 26): Unsafe use of a nullable receiver of type Bundle?
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/DetailsActivity.kt: (14, 26): Type mismatch: inferred type is String? but String was expected
+
+> Task :app:prepareLintJar
+> Task :app:generateDebugSources
+> Task :app:javaPreCompileDebug
+> Task :app:compileDebugJavaWithJavac
+> Task :app:compileDebugNdk NO-SOURCE
+> Task :app:compileDebugSources
+> Task :app:mergeDebugShaders
+> Task :app:compileDebugShaders
+> Task :app:generateDebugAssets
+> Task :app:mergeDebugAssets
+> Task :app:mergeExtDexDebug
+> Task :app:transformClassesWithDexBuilderForDebug
+> Task :app:mergeDexDebug
+> Task :app:validateSigningDebug
+> Task :app:signingConfigWriterDebug
+> Task :app:mergeDebugJniLibFolders
+> Task :app:transformNativeLibsWithMergeJniLibsForDebug
+> Task :app:processDebugJavaRes NO-SOURCE
+> Task :app:transformResourcesWithMergeJavaResForDebug
+> Task :app:packageDebug
+> Task :app:assembleDebug
+
+BUILD SUCCESSFUL in 1m 53s
+26 actionable tasks: 26 executed

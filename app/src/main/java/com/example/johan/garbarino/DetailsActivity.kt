@@ -11,7 +11,8 @@ class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_details_activity)
-        this.productId = getIntent().getExtras().getString("p_product_id")      
+//        this.productId = getIntent().getExtras().getString("p_product_id")      
+        this.productId = "0982a08485"
         txtMessage.text = "ProductId: " + this.productId + "\n\n" + " Módulo en construcción"
     }
 }
