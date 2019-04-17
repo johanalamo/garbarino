@@ -2,7 +2,6 @@ package com.example.johan.garbarino
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import kotlinx.android.synthetic.main.layout_details_activity.*
@@ -16,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class DetailsActivity : AppCompatActivity() {
    private var productId:String = ""
-    private var weatherData: TextView? = null
+    private var txtProductData: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +25,7 @@ class DetailsActivity : AppCompatActivity() {
         this.productId = "0982a08485"
         txtMessage.text = "ProductId: " + this.productId + "\n\n" + " Módulo en construcción"
 
-        weatherData = findViewById(R.id.textView)
+        txtProductData = findViewById(R.id.textView)
         findViewById<View>(R.id.button).setOnClickListener { getCurrentData() }
 
     }
@@ -36,10 +35,10 @@ class DetailsActivity : AppCompatActivity() {
             .baseUrl(BaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        val service = retrofit.create(WeatherService::class.java)
-        val call = service.getCurrentWeatherData(lat, lon, AppId)
-        call.enqueue(object : Callback<WeatherResponse> {
-            override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
+        val service = retrofit.create(ProductDataService::class.java)
+        val call = service.getProductData(lat, lon, AppId)
+        call.enqueue(object : Callback<ProductDataResponse> {
+            override fun onResponse(call: Call<ProductDataResponse>, response: Response<ProductDataResponse>) {
                 if (response.code() == 200) {
                     val weatherResponse = response.body()!!
 
@@ -61,12 +60,12 @@ class DetailsActivity : AppCompatActivity() {
                             "Pressure: " +
                             weatherResponse.main!!.pressure
 
-                    weatherData!!.text = stringBuilder
+                    txtProductData!!.text = stringBuilder
                 }
             }
 
-            override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
-                weatherData!!.text = t.message
+            override fun onFailure(call: Call<ProductDataResponse>, t: Throwable) {
+                txtProductData!!.text = t.message
             }
         })
     }

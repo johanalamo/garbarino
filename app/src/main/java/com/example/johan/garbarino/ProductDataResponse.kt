@@ -2,7 +2,7 @@ package com.example.johan.garbarino
 
 import com.google.gson.annotations.SerializedName
 
-class WeatherResponse {
+class ProductDataResponse {
 
     @SerializedName("coord")
     var coord: Coord? = null
@@ -24,8 +24,8 @@ class WeatherResponse {
     var id: Int = 0
     @SerializedName("name")
     var name: String? = null
-    @SerializedName("cod")
-    var cod: Float = 0.toFloat()
+//    @SerializedName("cod")
+//    var cod: Float = 0.toFloat()
 }
 
 class Weather {
