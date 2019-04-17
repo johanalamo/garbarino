@@ -58,7 +58,10 @@ class DetailsActivity : AppCompatActivity() {
                             weatherResponse.main!!.humidity +
                             "\n" +
                             "Pressure: " +
-                            weatherResponse.main!!.pressure
+                            weatherResponse.main!!.pressure +
+                            "\n" +
+                            "Name: " +
+                            weatherResponse.name!!
 
                     txtProductData!!.text = stringBuilder
                 }
