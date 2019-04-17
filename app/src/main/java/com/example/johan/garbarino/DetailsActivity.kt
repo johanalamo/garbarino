@@ -36,7 +36,7 @@ class DetailsActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(ProductDataService::class.java)
-        val call = service.getProductData(lat, lon, AppId)
+        val call = service.getProductData(AppId)
         call.enqueue(object : Callback<ProductDataResponse> {
             override fun onResponse(call: Call<ProductDataResponse>, response: Response<ProductDataResponse>) {
                 if (response.code() == 200) {
@@ -76,7 +76,5 @@ class DetailsActivity : AppCompatActivity() {
 
         var BaseUrl = "http://api.openweathermap.org/"
         var AppId = "2e65127e909e178d0af311a81f39948c"
-        var lat = "35"
-        var lon = "139"
     }
 }
