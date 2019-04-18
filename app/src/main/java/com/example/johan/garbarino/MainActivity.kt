@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
    fun getListProducts() {
       val client = OkHttpClient()
-      val request = Request.Builder().url(Data.listUrl).build()
+      val request = Request.Builder().url(Data.getUrlProductList()).build()
       var z: Callback = object : Callback {
          override fun onFailure(call: Call, e: IOException) {
                println("error recovering data from server garbarino");
@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity() {
    fun checkListProducts(){
       if (Data.listReady){
          createRecyclerView(Data.listDataArray)
-//         showOnUI(Data.listDataArray)
       }else{
          runOnUiThread {
             Toast.makeText(this, "Data not ready", Toast.LENGTH_SHORT).show()

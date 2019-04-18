@@ -31,7 +31,8 @@
 
     <TextView
             android:text="TextView"
-            style="@style/stlProductListPrice"
+            style="@style/stlProductListDescription"
+            android:textSize="12sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView"

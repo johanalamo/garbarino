@@ -6,10 +6,9 @@ class Data {
 
 		//  detalle: https://garbarino.invisionapp.com/share/W9PRX4JH2RP#/screens/253182891_Detalle
 		//  listado: https://garbarino.invisionapp.com/share/WMPROKR32Y9#/screens/256466400_Resultados_-_Mosaico 
-
-		var listUrl:String    = "http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/"
-		var detailsUrl:String = "http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/dfe199bd8c/"
-		var reviewsUrl:String = "http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/{id}/reviews/"
+		fun getUrlProductList    ()         :String = "http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/"
+		fun getUrlProductDetails (id:String):String = "http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/" + id + "/"
+		fun getUrlProductReviews (id:String):String = "http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/" + id + "/reviews/"
 
 
 		var listReady: Boolean = false
@@ -19,8 +18,12 @@ class Data {
 		var detailsReady: Boolean = false
 		var detailsData:String? = ""
 		
+		lateinit var productDetails:ProductDetailsResponse
+		
 		var reviewsReady: Boolean = false
 		var reviewsData:String? = ""
+
+		lateinit var productReviews:ProductReviewsResponse
 	}
 
 }
