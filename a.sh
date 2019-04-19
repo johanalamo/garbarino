@@ -26,7 +26,7 @@ if [ $1 = "com" ]; then
             $normal;
             echo 
             echo "ERROR: ";
-            cat $log_file | head -20;
+            cat $log_file | head -30;
             echo $fecha;
         fi
         first=0;

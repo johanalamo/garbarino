@@ -1,38 +1,51 @@
 package com.example.johan.garbarino
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import kotlinx.android.synthetic.main.layout_details_activity.*
+import kotlinx.android.synthetic.main.layout_product_details.*
+import kotlinx.android.synthetic.main.layout_product_list_recycler_view.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-//https://www.c-sharpcorner.com/article/how-to-use-retrofit-2-with-android-using-kotlin/
 
 class DetailsActivity : AppCompatActivity() {
-   private var productId:String = ""
+    private var productId: String = ""
     private var txtProductData: TextView? = null
+
+    private lateinit var recyclerViewImage:RecyclerView
+    private lateinit var viewAdapterImage: RecyclerView.Adapter<*>
+    private lateinit var viewManagerImage: RecyclerView.LayoutManager
+    private lateinit var recyclerViewReview:RecyclerView
+    private lateinit var viewAdapterReview: RecyclerView.Adapter<*>
+    private lateinit var viewManagerReview: RecyclerView.LayoutManager
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.layout_details_activity)
+
+        Data.productDetailsLoaded = false
+        Data.productReviewsLoaded = false
+
+
         try {
             this.productId = getIntent().getExtras().getString("p_product_id")
-        }catch (e:Exception) {
+        } catch (e: Exception) {
             this.productId = "0982a08485"
         }
-        txtMessage.text = "ProductId: " + this.productId + "\n\n" + " Módulo en construcción"
-
-        txtProductData = findViewById(R.id.textView)
-  //      findViewById<View>(R.id.button).setOnClickListener {
         getProductDetailsData()
         getProductReviewsData()
- //         }
-
     }
 
     internal fun getProductDetailsData() {
@@ -45,33 +58,19 @@ class DetailsActivity : AppCompatActivity() {
         call.enqueue(object : Callback<ProductDetailsResponse> {
             override fun onResponse(call: Call<ProductDetailsResponse>, response: Response<ProductDetailsResponse>) {
                 if (response.code() == 200) {
-                    val productResponseDos = response.body()!!
+                    Data.productDetails = response.body()!!
+                    Data.productDetailsLoaded = true
+                    showDetailsOnUi(Data.productDetails)
+                    createRecyclerViewImageList(Data.getCompleteImageList())
 
-                    Data.productDetails = productResponseDos
-                    val productResponse = Data.productDetails
-                    var stringBuilder = "\n\nDetails\nXID: " + productResponse.xid!! + "\n" +
-                            "Description: " + productResponse.description!! + "\n" +
-                            "price: " + productResponse!!.price!!.toString() + "\n" +
-                            "list price: " + productResponse!!.listPrice!!.toString() + "\n" +
-                            "discount: " + productResponse!!.discount!!.toString() + "\n" +
-                            "mainIMage.maxWidth: " + productResponse.mainImage!!.maxWidth!! + "\n" +
-                            "mainImage.url: " + productResponse.mainImage!!.url!!
-
-                    for ( i in 0..(productResponse.resources!!.images.size - 1) ){
-                        stringBuilder += "\n\n" + "im" + i.toString() + ": " + productResponse.resources!!.images[i].maxWidth
-                        stringBuilder += "\n" + "im" + i.toString() + ": " + productResponse.resources!!.images[i].url
-
-                    }
-
-                    txtProductData!!.text = txtProductData!!.text.toString() + stringBuilder
                 }
             }
-
             override fun onFailure(call: Call<ProductDetailsResponse>, t: Throwable) {
-                txtProductData!!.text = t.message
+                Data.productDetailsLoaded = false
             }
         })
     }
+
     internal fun getProductReviewsData() {
         val retrofit = Retrofit.Builder()
             .baseUrl(Data.getUrlProductReviews(this.productId))
@@ -82,31 +81,54 @@ class DetailsActivity : AppCompatActivity() {
         call.enqueue(object : Callback<ProductReviewsResponse> {
             override fun onResponse(call: Call<ProductReviewsResponse>, response: Response<ProductReviewsResponse>) {
                 if (response.code() == 200) {
-                    val productResponseDos = response.body()!!
-
-                    Data.productReviews = productResponseDos
-                    val productResponse = Data.productReviews
-                    var stringBuilder = "\n\nREVIEWS\nID: " + productResponse!!.items!![0].id!! + "\n"  +
-                            "Estrellas: " + productResponse!!.items!![0]!!.reviewStatistics!!.average!!.toString() + "\n"
-                    var max:Int = 3;
-                    if (productResponse!!.items!![0]!!.reviews!!.size < 3) {
-                        max = productResponse!!.items!![0]!!.reviews!!.size!!
-                    }
-                    for ( i in 0..( max - 1) ){
-                        stringBuilder += "\n\n" + "name: " + productResponse!!.items!![0].reviews!![i].userNickname!!
-                        stringBuilder += "\n" + "title: " + productResponse!!.items!![0].reviews!![i].title!!
-                        stringBuilder += "\n" + "comment: " + productResponse!!.items!![0].reviews!![i].reviewText!!
-                        stringBuilder += "\n" + "puntos: " + productResponse!!.items!![0].reviews!![i].rating!!.toString()
-
-                    }
-
-                    txtProductData!!.text = txtProductData!!.text.toString() + stringBuilder
+                    Data.productReviews = response.body()!!
+                    Data.productReviewsLoaded = true
+                    showReviewsOnUI(Data.productReviews)
+                    createRecyclerViewReviewList(Data.getReviewList())
                 }
             }
-
             override fun onFailure(call: Call<ProductReviewsResponse>, t: Throwable) {
-                txtProductData!!.text = t.message
+                Data.productReviewsLoaded = false
             }
         })
     }
+
+    fun showReviewsOnUI(res: ProductReviewsResponse) {
+        txtEstrellas.text = getString(R.string.strPoints) + ": " + res!!.items!![0]!!.reviewStatistics!!.average!!.toString()
+    }
+
+    fun showDetailsOnUi(res: ProductDetailsResponse) {
+        txtDescription.text = res.description!!
+        txtPrice.text = "$ " + res.price.toString()
+
+        if (res.discount == 0)
+            lytDiscount.visibility = LinearLayout.GONE
+        else {
+            txtListPrice.text = "$ " + res.listPrice.toString()
+            txtDiscount.text = res.discount.toString() + "% OFF"
+            txtListPrice.setPaintFlags(txtListPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
+        }
+    }
+
+    fun createRecyclerViewImageList(data:Array<Image>){
+        viewManagerImage = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        viewAdapterImage = AdapterProductImageList(data, this)
+        recyclerViewImage = findViewById <RecyclerView>(R.id.rviewProductListImages).apply {
+            setHasFixedSize(false);
+            layoutManager = viewManagerImage
+            adapter = viewAdapterImage
+        }
+    }
+
+    fun createRecyclerViewReviewList(data:ArrayList<Review>){
+        viewManagerReview = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        viewAdapterReview = AdapterProductReviewList(data, this)
+        recyclerViewReview = findViewById <RecyclerView>(R.id.rviewProductListReviews).apply {
+            setHasFixedSize(false);
+            layoutManager = viewManagerReview
+            adapter = viewAdapterReview
+        }
+    }
+
+
 }

@@ -7,16 +7,13 @@ import java.io.IOException
 import android.widget.Toast
 import android.os.SystemClock
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.AttributeSet
 import com.google.gson.Gson
 
 
 data class Lista(val items: Array<Product>)
 
 
-//http://kotlination.com/kotlin/kotlin-convert-object-to-from-json-gson
 class MainActivity : AppCompatActivity() {
 
    private lateinit var recyclerView:RecyclerView
@@ -37,11 +34,11 @@ class MainActivity : AppCompatActivity() {
                println("error recovering data from server garbarino");
          }
          override fun onResponse(call: Call, response: Response) {
-            Data.listReady = true
+            Data.productListLoaded = true
             Data.listData = response.body()?.string()
             val gson = Gson()
             val productList : Lista = gson.fromJson(Data.listData, Lista::class.java)
-            Data.listDataArray = productList.items
+            Data.productList = productList.items
          }
       }
       client.newCall(request).enqueue(z)
@@ -50,8 +47,8 @@ class MainActivity : AppCompatActivity() {
 
 
    fun checkListProducts(){
-      if (Data.listReady){
-         createRecyclerView(Data.listDataArray)
+      if (Data.productListLoaded){
+         createRecyclerView(Data.productList)
       }else{
          runOnUiThread {
             Toast.makeText(this, "Data not ready", Toast.LENGTH_SHORT).show()
@@ -60,19 +57,10 @@ class MainActivity : AppCompatActivity() {
          }
       }
    }
-   fun showOnUI(data:Array<Product>){
-      for (i  in 0..(Data.listDataArray.size - 1)){
-         var p:Product = data[i]
-         Toast.makeText(this, data[i].toString(), Toast.LENGTH_SHORT).show()
-         println(p)
-      }
-      println(data)
-   }
-
    fun createRecyclerView(data:Array<Product>){
       //  https://developer.android.com/guide/topics/ui/layout/recyclerview
-      viewManager = GridLayoutManager(this, 2)
-      viewAdapter = MyAdapter(data, this)
+      viewManager = GridLayoutManager(this, 2) //LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+      viewAdapter = AdapterProductList(data, this)
       recyclerView = findViewById <RecyclerView>(R.id.rviewProducts).apply {
          setHasFixedSize(false);
          layoutManager = viewManager

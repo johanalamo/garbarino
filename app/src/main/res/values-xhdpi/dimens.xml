@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="sizeImgProductList">90dp</dimen>
+    <dimen name="sizeImgProductList">110dp</dimen>
 
+    <dimen name="sizeImgProductDetails">300dp</dimen>
 
 
     <dimen name="zeroSep">0dp</dimen>
@@ -21,103 +22,12 @@
     <dimen name="textSizeListPriceInList">18sp</dimen>
     <dimen name="textSizeDiscountInList">18sp</dimen>
 
+    <dimen name="textSizeDescriptionInDetails">22sp</dimen>
+    <dimen name="textSizePriceInDetails">30sp</dimen>
+    <dimen name="textSizeListPriceInDetails">22sp</dimen>
+    <dimen name="textSizeDiscountInDetails">22sp</dimen>
+    <dimen name="textSizeStarsInDetails">20sp</dimen>
 
-
-
-
-
-
-
-
-    <!-- name to this file, to determinate which is in use    -->
-    <string name="nameFileDimens">XXXHDPI</string>
-
-    <!-- sizes for radios of rounded corners  -->
-
-    <!-- with for differents lines -->
-    <dimen name="sizeWidthLineThick">2dp</dimen>
-
-    <!-- separators, used for margins and paddings -->
-
-    <dimen name="sizeMarginButton">@dimen/oneSep</dimen>
-    <dimen name="sizePaddingButton">@dimen/oneSep</dimen>
-    <dimen name="sizeMarginButtonList">2dp</dimen>
-    <dimen name="sizePaddingButtonList">2dp</dimen>
-
-    <dimen name="sizeTxtTitle">30sp</dimen>
-    <dimen name="sizeTxtButton">24sp</dimen>
-    <dimen name="sizeTxtButtonDescription">14sp</dimen>
-
-    <dimen name="sizeIconMainMenuButtonLarge">70dp</dimen>
-    <dimen name="sizeIconMainMenuButtonSmall">50dp</dimen>
-
-    <!-- about section -->
-    <dimen name="sizeTextAboutTitle">30sp</dimen>
-    <dimen name="sizeTextAboutSubtitle">18sp</dimen>
-    <dimen name="sizeTextAboutContent">18sp</dimen>
-    <!-- end about section -->
-
-
-
-
-
-
-
-<!-- section for old project -->
-
-    <!-- name to this file, to determinate which is in use    -->
-    <string name="old_nameFileDimens">XHDPI</string>
-
-    <!-- old_table aspect  -->
-    <string name="old_tableAspectRatio">3:3</string>
-
-
-    <!-- separators, used for margins and paddings -->
-    <dimen name="old_zeroSep">0dp</dimen>
-    <dimen name="old_oneSep">8dp</dimen>
-    <dimen name="old_twoSep">16dp</dimen>
-    <dimen name="old_threeSep">24dp</dimen>
-
-    <!-- sizes for text -->
-    <dimen name="old_sizeTextPlayerTypeSelect">20sp</dimen>
-    <dimen name="old_sizeTextBattleTitle">24sp</dimen>
-    <dimen name="old_sizeTextAppTitle">24sp</dimen>
-    <dimen name="old_sizeTextMessage">20sp</dimen>
-    <dimen name="old_sizeTextAboutTitle">24sp</dimen>
-    <dimen name="old_sizeTextAboutSubtitle">14sp</dimen>
-    <dimen name="old_sizeTextAboutContent">14sp</dimen>
-
-    <dimen name="old_sizeTextHelpTitle">20sp</dimen>
-    <dimen name="old_sizeTextHelpSubtitle">18sp</dimen>
-    <dimen name="old_sizeTextHelpContent">14sp</dimen>
-
-    <!-- sizes for buttons  -->
-    <dimen name="old_sizeBtnPlay">90dp</dimen>
-    <dimen name="old_sizeBtnSelectPlayerType">80dp</dimen>
-    <dimen name="old_sizeBtnSelectPlayerCard">35dp</dimen>
-
-    <!-- sizes for images for types and card players (winner and in battle)  -->
-    <dimen name="old_sizeImgPlayerTypePlaying">40dp</dimen>
-    <dimen name="old_sizeImgPlayerCardPlaying">30dp</dimen>
-
-    <dimen name="old_sizeImgPlayerTypeWinner">@dimen/old_sizeImgPlayerTypePlaying</dimen>
-    <dimen name="old_sizeImgPlayerCardWinner">@dimen/old_sizeImgPlayerTypeWinner</dimen>
-
-    <!-- sizes for radios of rounded corners  -->
-    <dimen name="old_radioCornerToolbar">15dp</dimen>
-    <dimen name="old_radioCornerButton">9dp</dimen>
-    <dimen name="old_radioCornerBoard">30dp</dimen>
-    <dimen name="old_radioCornerMessage">15dp</dimen>
-
-    <!-- size between a square and its shadow -->
-    <dimen name="old_sizeShadow">4dp</dimen>
-
-    <!-- with for differents lines -->
-    <dimen name="old_sizeWidthLineThin">1dp</dimen>
-    <dimen name="old_sizeWidthLineThick">2dp</dimen>
-
-
-
-<!-- end section for old project -->
+    <dimen name="textSizeReview">18sp</dimen>
 
 </resources>
