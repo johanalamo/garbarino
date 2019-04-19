@@ -5,7 +5,6 @@
 
     <dimen name="sizeImgProductDetails">300dp</dimen>
 
-
     <dimen name="zeroSep">0dp</dimen>
     <dimen name="oneSep">2dp</dimen>
     <dimen name="twoSep">4dp</dimen>
