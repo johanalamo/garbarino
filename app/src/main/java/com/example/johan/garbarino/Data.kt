@@ -1,6 +1,5 @@
 package com.example.johan.garbarino
 
-
 class Data {
 	companion object {
 		fun getUrlProductList    ()         :String = "http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/"
@@ -9,8 +8,7 @@ class Data {
 
 
 		var productListLoaded: Boolean = false
-		var listData:String? = ""
-		var productList:Array<Product> = arrayOf()
+		lateinit var productList:ProductListResponse
 
 		lateinit var productDetails:ProductDetailsResponse
 		var productDetailsLoaded: Boolean = false
@@ -18,17 +16,12 @@ class Data {
 		lateinit var productReviews:ProductReviewsResponse
 		var productReviewsLoaded: Boolean = false
 
-		//  detalle: https://garbarino.invisionapp.com/share/W9PRX4JH2RP#/screens/253182891_Detalle
-		//  listado: https://garbarino.invisionapp.com/share/WMPROKR32Y9#/screens/256466400_Resultados_-_Mosaico 
-
-
 		fun getCompleteImageList():Array<Image>{
 			if (Data.productDetailsLoaded){
 				return Data.productDetails!!.resources!!.images!!
 			}else
 				return arrayOf()
 		}
-
 
 		fun getReviewList(cantidad:Int? = null):ArrayList<Review>{
 			var res:ArrayList<Review> = ArrayList()

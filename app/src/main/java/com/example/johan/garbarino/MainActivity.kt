@@ -9,9 +9,9 @@ import android.os.SystemClock
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.google.gson.Gson
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-
-data class Lista(val items: Array<Product>)
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,42 +23,33 @@ class MainActivity : AppCompatActivity() {
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
       setContentView(R.layout.layout_main_activity)
-      getListProducts()
+      Data.productListLoaded = false
+      getProductListData()
    }
 
-   fun getListProducts() {
-      val client = OkHttpClient()
-      val request = Request.Builder().url(Data.getUrlProductList()).build()
-      var z: Callback = object : Callback {
-         override fun onFailure(call: Call, e: IOException) {
-               println("error recovering data from server garbarino");
+   internal fun getProductListData() {
+      val retrofit = Retrofit.Builder()
+         .baseUrl(Data.getUrlProductList())
+         .addConverterFactory(GsonConverterFactory.create())
+         .build()
+      val service = retrofit.create(ProductListService::class.java)
+      val call = service.getProductListData()
+      call.enqueue(object : retrofit2.Callback<ProductListResponse> {
+         override fun onResponse(call: retrofit2.Call<ProductListResponse>, response: retrofit2.Response<ProductListResponse>) {
+            if (response.code() == 200) {
+               Data.productList = response.body()!!
+               Data.productListLoaded = true
+               createRecyclerViewProductList(Data.productList.items)
+            }
          }
-         override fun onResponse(call: Call, response: Response) {
-            Data.productListLoaded = true
-            Data.listData = response.body()?.string()
-            val gson = Gson()
-            val productList : Lista = gson.fromJson(Data.listData, Lista::class.java)
-            Data.productList = productList.items
+         override fun onFailure(call: retrofit2.Call<ProductListResponse>, t: Throwable) {
+            Data.productDetailsLoaded = false
          }
-      }
-      client.newCall(request).enqueue(z)
-      checkListProducts()
+      })
    }
 
 
-   fun checkListProducts(){
-      if (Data.productListLoaded){
-         createRecyclerView(Data.productList)
-      }else{
-         runOnUiThread {
-            Toast.makeText(this, "Data not ready", Toast.LENGTH_SHORT).show()
-            SystemClock.sleep(2000)
-            checkListProducts()
-         }
-      }
-   }
-   fun createRecyclerView(data:Array<Product>){
-      //  https://developer.android.com/guide/topics/ui/layout/recyclerview
+   fun createRecyclerViewProductList(data:Array<Product>){
       viewManager = GridLayoutManager(this, 2) //LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
       viewAdapter = AdapterProductList(data, this)
       recyclerView = findViewById <RecyclerView>(R.id.rviewProducts).apply {
