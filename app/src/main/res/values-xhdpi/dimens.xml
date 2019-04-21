@@ -3,7 +3,7 @@
 
     <dimen name="sizeImgProductList">110dp</dimen>
 
-    <dimen name="sizeImgProductDetails">300dp</dimen>
+    <dimen name="sizeImgProductDetails">250dp</dimen>
 
     <dimen name="zeroSep">0dp</dimen>
     <dimen name="oneSep">2dp</dimen>
@@ -21,12 +21,18 @@
     <dimen name="textSizeListPriceInList">18sp</dimen>
     <dimen name="textSizeDiscountInList">18sp</dimen>
 
-    <dimen name="textSizeDescriptionInDetails">22sp</dimen>
+    <dimen name="textSizeDescriptionInDetails">26sp</dimen>
     <dimen name="textSizePriceInDetails">30sp</dimen>
     <dimen name="textSizeListPriceInDetails">22sp</dimen>
     <dimen name="textSizeDiscountInDetails">22sp</dimen>
-    <dimen name="textSizeStarsInDetails">20sp</dimen>
+    <dimen name="textSizeStarsInDetails">30sp</dimen>
 
     <dimen name="textSizeReview">18sp</dimen>
+
+    <dimen name="sizeHeightStarProductDetails">40dp</dimen>
+    <dimen name="sizeWidthStarProductDetails">200dp</dimen>
+
+    <dimen name="sizeHeightStarProductReviews">50dp</dimen>
+    <dimen name="sizeWidthStarProductReviews">100dp</dimen>
 
 </resources>
