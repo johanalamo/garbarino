@@ -39,7 +39,10 @@ class AdapterProductReviewList(private val data: ArrayList<Review>, private val 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        holder.linearLyt.txtReviewStars.text  = "Estrellas: " + data[position].rating.toString()
+        holder.linearLyt.txtNumReview.text  = (position + 1).toString()
+        holder.linearLyt.txtReviewStars.text  = data[position].rating.toString()
+        holder.linearLyt.rtbarProductReview.rating = data[position].rating!!
+
         holder.linearLyt.txtReviewDate.text  = data[position].submissionTime?.subSequence(0,10)
         if ((data[position].title == null) or (data[position].title == ""))
             holder.linearLyt.txtReviewTitle.text  = data[position].title

@@ -95,7 +95,8 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     fun showReviewsOnUI(res: ProductReviewsResponse) {
-        txtEstrellas.text = getString(R.string.strPoints) + ": " + res!!.items!![0]!!.reviewStatistics!!.average!!.toString()
+        txtEstrellas.text = res!!.items!![0]!!.reviewStatistics!!.average!!.toString()
+        rtbarProductDetails.rating = res!!.items!![0]!!.reviewStatistics!!.average!!
     }
 
     fun showDetailsOnUi(res: ProductDetailsResponse) {
