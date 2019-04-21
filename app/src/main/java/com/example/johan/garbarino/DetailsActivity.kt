@@ -32,6 +32,7 @@ class DetailsActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        overridePendingTransition(R.anim.slide_up, R.anim.slide_off)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_details_activity)
 
