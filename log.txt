@@ -1,2 +1,60 @@
 
-==vie abr 19 15:52:07 -03 2019=======
+==dom abr 21 05:33:46 -03 2019=======
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:compileDebugAidl NO-SOURCE
+> Task :app:compileDebugRenderscript UP-TO-DATE
+> Task :app:checkDebugManifest UP-TO-DATE
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:mainApkListPersistenceDebug UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:processDebugManifest
+> Task :app:processDebugResources
+
+> Task :app:compileDebugKotlin
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (21, 31): Unnecessary non-null assertion (!!) on a non-null receiver of type ProductDetailsResponse
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (21, 52): Unnecessary non-null assertion (!!) on a non-null receiver of type Array<Image>
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (28, 18): Variable 'max' initializer is redundant
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (32, 31): Unnecessary non-null assertion (!!) on a non-null receiver of type ProductReviewsResponse
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (32, 44): Unnecessary non-null assertion (!!) on a non-null receiver of type Item
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (32, 61): Unnecessary non-null assertion (!!) on a non-null receiver of type Int
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (34, 40): Unnecessary non-null assertion (!!) on a non-null receiver of type ProductReviewsResponse
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (34, 53): Unnecessary non-null assertion (!!) on a non-null receiver of type Item
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (34, 70): Unnecessary non-null assertion (!!) on a non-null receiver of type Int
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (35, 32): Unnecessary non-null assertion (!!) on a non-null receiver of type ProductReviewsResponse
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (35, 45): Unnecessary non-null assertion (!!) on a non-null receiver of type Item
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (35, 62): Unnecessary non-null assertion (!!) on a non-null receiver of type Int
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (40, 34): Unnecessary non-null assertion (!!) on a non-null receiver of type ProductReviewsResponse
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/Data.kt: (40, 47): Unnecessary non-null assertion (!!) on a non-null receiver of type Item
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/DetailsActivity.kt: (43, 30): Unsafe use of a nullable receiver of type Bundle?
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/DetailsActivity.kt: (43, 30): Type mismatch: inferred type is String? but String was expected
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/DetailsActivity.kt: (97, 71): Unnecessary non-null assertion (!!) on a non-null receiver of type ProductReviewsResponse
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/DetailsActivity.kt: (97, 84): Unnecessary non-null assertion (!!) on a non-null receiver of type Item
+
+> Task :app:prepareLintJar UP-TO-DATE
+> Task :app:generateDebugSources UP-TO-DATE
+> Task :app:javaPreCompileDebug
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
+> Task :app:compileDebugNdk NO-SOURCE
+> Task :app:compileDebugSources UP-TO-DATE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders UP-TO-DATE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:transformClassesWithDexBuilderForDebug
+> Task :app:mergeDexDebug
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:signingConfigWriterDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:transformNativeLibsWithMergeJniLibsForDebug UP-TO-DATE
+> Task :app:processDebugJavaRes NO-SOURCE
+> Task :app:transformResourcesWithMergeJavaResForDebug UP-TO-DATE
+> Task :app:packageDebug
+> Task :app:assembleDebug
+
+BUILD SUCCESSFUL in 6s
+26 actionable tasks: 7 executed, 19 up-to-date
