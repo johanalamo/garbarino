@@ -16,7 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
+import android.os.SystemClock
 
 class DetailsActivity : AppCompatActivity() {
     private var productId: String = ""
@@ -95,8 +95,30 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     fun showReviewsOnUI(res: ProductReviewsResponse) {
-        txtEstrellas.text = res!!.items!![0]!!.reviewStatistics!!.average!!.toString()
-        rtbarProductDetails.rating = res!!.items!![0]!!.reviewStatistics!!.average!!
+		run {
+			var max:Float = 0.toFloat()
+			max = res!!.items!![0]!!.reviewStatistics!!.average!!
+
+			var total_ms:Float = 1000.toFloat()
+			var fps:Float = 60.toFloat()
+			var total_frames = total_ms / 1000.toFloat() * fps
+			
+			var sum: Float = max / total_frames
+			var interval = total_ms / total_frames
+			
+			for (i in 1..total_frames.toInt()) {
+				runOnUiThread {
+					txtEstrellas.text = (sum * i).toString()
+					rtbarProductDetails.rating = (sum * i)
+					SystemClock.sleep(interval.toLong())
+				}
+			}
+			
+			
+	//        txtEstrellas.text = res!!.items!![0]!!.reviewStatistics!!.average!!.toString()
+	//        rtbarProductDetails.rating = res!!.items!![0]!!.reviewStatistics!!.average!!
+		}
+
     }
 
     fun showDetailsOnUi(res: ProductDetailsResponse) {
