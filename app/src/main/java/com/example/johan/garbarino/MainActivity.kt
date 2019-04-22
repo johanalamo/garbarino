@@ -11,8 +11,9 @@ import android.support.v7.widget.RecyclerView
 import com.google.gson.Gson
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
-
+import android.arch.lifecycle.Observer
+import  com.example.johan.mvvm.MyViewModel
+import android.arch.lifecycle.ViewModelProviders
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,30 +25,15 @@ class MainActivity : AppCompatActivity() {
       super.onCreate(savedInstanceState)
       setContentView(R.layout.layout_main_activity)
       Data.productListLoaded = false
-      getProductListData()
-   }
 
-   internal fun getProductListData() {
-      val retrofit = Retrofit.Builder()
-         .baseUrl(Data.getUrlProductList())
-         .addConverterFactory(GsonConverterFactory.create())
-         .build()
-      val service = retrofit.create(ProductListService::class.java)
-      val call = service.getProductListData()
-      call.enqueue(object : retrofit2.Callback<ProductListResponse> {
-         override fun onResponse(call: retrofit2.Call<ProductListResponse>, response: retrofit2.Response<ProductListResponse>) {
-            if (response.code() == 200) {
-               Data.productList = response.body()!!
-               Data.productListLoaded = true
-               createRecyclerViewProductList(Data.productList.items)
-            }
-         }
-         override fun onFailure(call: retrofit2.Call<ProductListResponse>, t: Throwable) {
-            Data.productDetailsLoaded = false
-         }
-      })
+      var viewModel:MyViewModel = ViewModelProviders.of(this).get(MyViewModel::class.java)
+      viewModel.getUsername().observe(this, 
+               Observer { 
+                  valor -> createRecyclerViewProductList(valor!!.items)
+                  }
+      )
+      viewModel.getProductListData()
    }
-
 
    fun createRecyclerViewProductList(data:Array<Product>){
       viewManager = GridLayoutManager(this, 2) //LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
