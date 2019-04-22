@@ -16,7 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
+import android.os.SystemClock
 
 class DetailsActivity : AppCompatActivity() {
     private var productId: String = ""
@@ -32,6 +32,7 @@ class DetailsActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        overridePendingTransition(R.anim.slide_up, R.anim.slide_off)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_details_activity)
 
@@ -94,7 +95,9 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     fun showReviewsOnUI(res: ProductReviewsResponse) {
-        txtEstrellas.text = getString(R.string.strPoints) + ": " + res!!.items!![0]!!.reviewStatistics!!.average!!.toString()
+        var max:Float = res!!.items!![0]!!.reviewStatistics!!.average!!
+        var showAnimationStarsThread:ShowAnimationStarsThread = ShowAnimationStarsThread(this, max)
+        showAnimationStarsThread.start()
     }
 
     fun showDetailsOnUi(res: ProductDetailsResponse) {
@@ -131,4 +134,27 @@ class DetailsActivity : AppCompatActivity() {
     }
 
 
+}
+
+
+class ShowAnimationStarsThread(p_caller:AppCompatActivity, puntajeMaximo:Float): Thread(){
+    var max:Float = puntajeMaximo
+    var caller:AppCompatActivity = p_caller
+    val animationDuration:Float = 1000.toFloat()   //miliseguntos totales de la animación
+    val framesPerSecond:Float = 60.toFloat()
+    override fun run() {
+        super.run()
+        var totalFrames = animationDuration / 1000.toFloat() * framesPerSecond
+
+        var sumByInterval: Float = max / totalFrames
+        var interval = animationDuration / totalFrames
+
+        for (i in 1..totalFrames.toInt()) {
+            SystemClock.sleep(interval.toLong())
+            caller.runOnUiThread {
+                caller.txtEstrellas.text = String.format("%.2f", (sumByInterval * i))
+                caller.rtbarProductDetails.rating = (sumByInterval * i)
+            }
+        }
+    }
 }

@@ -6,6 +6,35 @@
                 android:orientation="vertical"
                 style="@style/stlProductListItem"
 >
+    <android.support.constraint.ConstraintLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+
+    >
+        <RatingBar
+                android:id="@+id/rtbarProductDetails"
+                android:numStars="5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:scaleY="0.7"
+                android:scaleX="0.7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+				android:isIndicator="true"
+        />
+        <TextView
+                android:layout_marginLeft="@dimen/twoSep"
+                android:text=""
+                style="@style/stlProductDetailsStars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtEstrellas"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/rtbarProductDetails"
+        />
+    </android.support.constraint.ConstraintLayout>
+
     <TextView
             android:text="TextView"
             style="@style/stlProductDetailsDescription"
@@ -45,12 +74,5 @@
                 android:id="@+id/txtDiscount"
         />
     </LinearLayout>
-    <TextView
-            android:text="TextView"
-            style="@style/stlProductDetailsStars"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtEstrellas"
-    />
 
 </LinearLayout>

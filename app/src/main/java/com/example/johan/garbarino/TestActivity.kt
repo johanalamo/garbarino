@@ -11,37 +11,28 @@ import com.example.johan.mvvm.*
 
 class TestActivity : AppCompatActivity() {
 
-    /*
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
-*/
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_test)
-        // Create a ViewModel the first time the system calls an activity's onCreate() method.
-        // Re-created activities receive the same MyViewModel instance created by the first activity.
 
-        val model = ViewModelProviders.of(this).get(MyViewModel::class.java)
+         
+      /* Called on Activity onCreate() */
+      var viewModel:MyViewModel = ViewModelProviders.of(this).get(MyViewModel::class.java)
+      viewModel.getUsername().observe(this, Observer { valor -> updateUI(valor) })
 
+      /*  Called if there is no active network request */
+      viewModel.initNetworkRequest()       
 
+      btnTest.setOnClickListener {
+               viewModel.initNetworkRequestDos()
+         }
 
-        model.getUsers().observe(this, Observer<List<User>>{ users ->
-            
-            
-            txtTexto.text = "usuarios:\n\n"
-            if (users != null) {
-				for (i in 0..users!!.size){
-					var user:User = users[i]
-					txtTexto.text = txtTexto.text.toString() +
-							"Id: " + user.id.toString() +
-							"nombre: " + user.name + "\n\n"
-				}
-			}
-            // update UI
-        })
-  
-    }
-
+   }
+   
+   
+   fun updateUI(s:String?){
+      txtTexto.text = "valor obtenido: " + s
+   }
+   
 }

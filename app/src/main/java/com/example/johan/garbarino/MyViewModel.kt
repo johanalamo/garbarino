@@ -14,54 +14,29 @@ class User (
 )
 //http://www.albertgao.xyz/2018/04/13/why-unresolved-reference-for-viewmodelproviders/
 
-
+//https://medium.com/rocknnull/exploring-kotlin-using-android-architecture-components-and-vice-versa-aa16e600041a
 
 
 
 
 class MyViewModel : ViewModel() {
-    private val users: MutableLiveData<List<User>> by lazy {
-        MutableLiveData<List<User>>().also {
-            loadUsers()
-        }
+   private val username = MutableLiveData<String>()
+
+    fun initNetworkRequest() {
+        /* expensive operation, e.g. network request */
+        username.value = "Peter"
     }
 
-        init {
-            var l: ArrayList<User>? = null
-            l?.add(User(1, "johan"))
-            l?.add(User(2, "pedro"))
-            users.setValue(l)
-        }
-
-
-
-
-    fun getUsers(): LiveData<List<User>> {
-        return users
+    fun initNetworkRequestDos() {
+        /* expensive operation, e.g. network request */
+        username.value = "Otro valor posterior"
     }
 
-    private fun loadUsers() {
-        // Do an asynchronous operation to fetch users.
-
-//        run {
-            var l: ArrayList<User>? = null
-            l?.add(User(3, "pepe"))
-            l?.add(User(4, "fulano"))
-//            users.setValue(l)
-//        }
 
 
-/*
-        var l2:ArrayList<User> = ArrayList()
 
-        l2.add(User(3, "joaquin"))
-        l2.add(User(4, "alamo"))
-        l2.add(User(5, "bauti"))
-
-//        users.setValue(l2)
-*/
-
+    fun getUsername(): LiveData<String> {
+        return username
     }
-
 }
 
