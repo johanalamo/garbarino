@@ -4,6 +4,8 @@ green="echo -n -e \e[42m";
 red="echo -n -e \e[41m";
 log_file="log.txt";
 app="com.example.johan.garbarino";
+activity="MainActivity"
+
 if [ $1 = "com" ]; then
     first=1;
     while [ "$2" = "-r" ] || [ $first -eq 1 ]; do
@@ -24,14 +26,13 @@ if [ $1 = "com" ]; then
             $normal;
             echo 
             echo "ERROR: ";
-            cat $log_file | head -20;
+            cat $log_file | head -30;
             echo $fecha;
         fi
         first=0;
         sleep 1s;
     done;
     exit;
-
 fi;
 if [ $1 = "viewcolors" ]; then
     for i in `seq 0 256`; do
@@ -41,6 +42,11 @@ if [ $1 = "viewcolors" ]; then
     exit;
 fi
 
+if [ "$2" != ""  ]; then
+	activity=$2;
+fi
+echo "activity: $activity";
+#exit;
 if [ $1 = "run" ]; then
     ./gradlew assembleDebug && 
     ./gradlew installDebug && 
@@ -48,7 +54,7 @@ if [ $1 = "run" ]; then
     #el anterior siempre da $?=0
     adb -d install "`pwd`/app/build/outputs/apk/debug/app-debug.apk" &&
     #anterior manejarla con $? 0->exito   otro-> fall{o
-    adb shell am start -n "${app}/${app}.MainActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER;
+    adb shell am start -n "${app}/${app}.${activity}" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER;
     exit;
 fi;
 if [ $1 = "install" ]; then
@@ -56,12 +62,12 @@ if [ $1 = "install" ]; then
     #el anterior siempre da $?=0
     adb -d install "`pwd`/app/build/outputs/apk/debug/app-debug.apk" &&
     #anterior manejarla con $? 0->exito   otro-> fall{o
-    adb shell am start -n "${app}/${app}.MainActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER;
+    adb shell am start -n "${app}/${app}.${activity}" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER;
     exit;
 fi;
 if [ $1 = "start" ]; then
 #    adb -d install "`pwd`/app/build/outputs/apk/debug/app-debug.apk" &&
-    adb shell am start -n "${app}/${app}.MainActivity"  -a android.intent.action.MAIN -c android.intent.category.LAUNCHER;
+    adb shell am start -n "${app}/${app}.${activity}"  -a android.intent.action.MAIN -c android.intent.category.LAUNCHER;
 #    sleep 1s;
     exit;
 fi;
@@ -80,3 +86,17 @@ fi;
 echo "unrecognized option";
 
 exit;
+
+
+http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/0982a08485/
+http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/3d77bc3a98/
+http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/a20b55dd53/
+http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/5b119b7e68/
+http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/fac1a6c3d1/
+http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/83002e672d/
+http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/8f1dcc0c42/
+http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/62cb75e2fa/
+http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/dfe199bd8c/
+http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/f6f8b547a5/
+
+https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&AppId=2e65127e909e178d0af311a81f39948c
