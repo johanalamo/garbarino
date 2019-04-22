@@ -95,30 +95,9 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     fun showReviewsOnUI(res: ProductReviewsResponse) {
-		run {
-			var max:Float = 0.toFloat()
-			max = res!!.items!![0]!!.reviewStatistics!!.average!!
-
-			var total_ms:Float = 1000.toFloat()
-			var fps:Float = 60.toFloat()
-			var total_frames = total_ms / 1000.toFloat() * fps
-			
-			var sum: Float = max / total_frames
-			var interval = total_ms / total_frames
-			
-			for (i in 1..total_frames.toInt()) {
-				runOnUiThread {
-					txtEstrellas.text = (sum * i).toString()
-					rtbarProductDetails.rating = (sum * i)
-					SystemClock.sleep(interval.toLong())
-				}
-			}
-			
-			
-	//        txtEstrellas.text = res!!.items!![0]!!.reviewStatistics!!.average!!.toString()
-	//        rtbarProductDetails.rating = res!!.items!![0]!!.reviewStatistics!!.average!!
-		}
-
+        var max:Float = res!!.items!![0]!!.reviewStatistics!!.average!!
+        var showAnimationStarsThread:ShowAnimationStarsThread = ShowAnimationStarsThread(this, max)
+        showAnimationStarsThread.start()
     }
 
     fun showDetailsOnUi(res: ProductDetailsResponse) {
@@ -155,4 +134,27 @@ class DetailsActivity : AppCompatActivity() {
     }
 
 
+}
+
+
+class ShowAnimationStarsThread(p_caller:AppCompatActivity, puntajeMaximo:Float): Thread(){
+    var max:Float = puntajeMaximo
+    var caller:AppCompatActivity = p_caller
+    val animationDuration:Float = 1000.toFloat()   //miliseguntos totales de la animación
+    val framesPerSecond:Float = 60.toFloat()
+    override fun run() {
+        super.run()
+        var totalFrames = animationDuration / 1000.toFloat() * framesPerSecond
+
+        var sumByInterval: Float = max / totalFrames
+        var interval = animationDuration / totalFrames
+
+        for (i in 1..totalFrames.toInt()) {
+            SystemClock.sleep(interval.toLong())
+            caller.runOnUiThread {
+                caller.txtEstrellas.text = String.format("%.2f", (sumByInterval * i))
+                caller.rtbarProductDetails.rating = (sumByInterval * i)
+            }
+        }
+    }
 }
