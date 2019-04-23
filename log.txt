@@ -1,5 +1,10 @@
 
-==mar abr 23 08:43:59 -03 2019=======
+==mar abr 23 13:38:56 -03 2019=======
+
+> Configure project :app
+WARNING: Configuration 'testCompile' is obsolete and has been replaced with 'testImplementation'.
+It will be removed at the end of 2018. For more information see: http://d.android.com/r/tools/update-dependency-configurations.html
+
 > Task :app:preBuild UP-TO-DATE
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:compileDebugAidl NO-SOURCE
@@ -9,52 +14,32 @@
 > Task :app:mainApkListPersistenceDebug UP-TO-DATE
 > Task :app:generateDebugResValues UP-TO-DATE
 > Task :app:generateDebugResources UP-TO-DATE
-> Task :app:mergeDebugResources
+> Task :app:mergeDebugResources UP-TO-DATE
 > Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
 > Task :app:processDebugManifest UP-TO-DATE
-> Task :app:processDebugResources
-
-> Task :app:compileDebugKotlin
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (23, 31): Unnecessary non-null assertion (!!) on a non-null receiver of type ProductDetailsResponse
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (23, 52): Unnecessary non-null assertion (!!) on a non-null receiver of type Array<Image>
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (30, 18): Variable 'max' initializer is redundant
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (34, 31): Unnecessary non-null assertion (!!) on a non-null receiver of type ProductReviewsResponse
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (34, 44): Unnecessary non-null assertion (!!) on a non-null receiver of type Item
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (34, 61): Unnecessary non-null assertion (!!) on a non-null receiver of type Int
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (36, 40): Unnecessary non-null assertion (!!) on a non-null receiver of type ProductReviewsResponse
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (36, 53): Unnecessary non-null assertion (!!) on a non-null receiver of type Item
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (36, 70): Unnecessary non-null assertion (!!) on a non-null receiver of type Int
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (37, 32): Unnecessary non-null assertion (!!) on a non-null receiver of type ProductReviewsResponse
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (37, 45): Unnecessary non-null assertion (!!) on a non-null receiver of type Item
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (37, 62): Unnecessary non-null assertion (!!) on a non-null receiver of type Int
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (42, 34): Unnecessary non-null assertion (!!) on a non-null receiver of type ProductReviewsResponse
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ConfigApp.kt: (42, 47): Unnecessary non-null assertion (!!) on a non-null receiver of type Item
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ProductDetailsActivity.kt: (50, 30): Unsafe use of a nullable receiver of type Bundle?
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ProductDetailsActivity.kt: (50, 30): Type mismatch: inferred type is String? but String was expected
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ProductDetailsActivity.kt: (79, 28): Unnecessary non-null assertion (!!) on a non-null receiver of type ProductReviewsResponse
-w: /home/jalamo/projectsjohan/garbarino/app/src/main/java/com/example/johan/garbarino/ProductDetailsActivity.kt: (79, 41): Unnecessary non-null assertion (!!) on a non-null receiver of type Item
-
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
 > Task :app:prepareLintJar UP-TO-DATE
 > Task :app:generateDebugSources UP-TO-DATE
-> Task :app:javaPreCompileDebug
-> Task :app:compileDebugJavaWithJavac
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
 > Task :app:compileDebugNdk NO-SOURCE
-> Task :app:compileDebugSources
+> Task :app:compileDebugSources UP-TO-DATE
 > Task :app:mergeDebugShaders UP-TO-DATE
 > Task :app:compileDebugShaders UP-TO-DATE
 > Task :app:generateDebugAssets UP-TO-DATE
 > Task :app:mergeDebugAssets UP-TO-DATE
 > Task :app:mergeExtDexDebug UP-TO-DATE
-> Task :app:transformClassesWithDexBuilderForDebug
-> Task :app:mergeDexDebug
+> Task :app:transformClassesWithDexBuilderForDebug UP-TO-DATE
+> Task :app:mergeDexDebug UP-TO-DATE
 > Task :app:validateSigningDebug UP-TO-DATE
 > Task :app:signingConfigWriterDebug UP-TO-DATE
 > Task :app:mergeDebugJniLibFolders UP-TO-DATE
 > Task :app:transformNativeLibsWithMergeJniLibsForDebug UP-TO-DATE
 > Task :app:processDebugJavaRes NO-SOURCE
-> Task :app:transformResourcesWithMergeJavaResForDebug
-> Task :app:packageDebug
-> Task :app:assembleDebug
+> Task :app:transformResourcesWithMergeJavaResForDebug UP-TO-DATE
+> Task :app:packageDebug UP-TO-DATE
+> Task :app:assembleDebug UP-TO-DATE
 
-BUILD SUCCESSFUL in 6s
-26 actionable tasks: 9 executed, 17 up-to-date
+BUILD SUCCESSFUL in 0s
+26 actionable tasks: 26 up-to-date
