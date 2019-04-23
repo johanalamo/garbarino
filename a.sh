@@ -4,7 +4,7 @@ green="echo -n -e \e[42m";
 red="echo -n -e \e[41m";
 log_file="log.txt";
 app="com.example.johan.garbarino";
-activity="MainActivity"
+activity="ProductListActivity"
 
 if [ $1 = "com" ]; then
     first=1;
@@ -26,7 +26,7 @@ if [ $1 = "com" ]; then
             $normal;
             echo 
             echo "ERROR: ";
-            cat $log_file | head -30;
+            cat $log_file | head -50;
             echo $fecha;
         fi
         first=0;
@@ -55,6 +55,7 @@ if [ $1 = "run" ]; then
     adb -d install "`pwd`/app/build/outputs/apk/debug/app-debug.apk" &&
     #anterior manejarla con $? 0->exito   otro-> fall{o
     adb shell am start -n "${app}/${app}.${activity}" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER;
+    date;
     exit;
 fi;
 if [ $1 = "install" ]; then
