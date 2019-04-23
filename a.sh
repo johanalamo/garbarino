@@ -4,7 +4,7 @@ green="echo -n -e \e[42m";
 red="echo -n -e \e[41m";
 log_file="log.txt";
 app="com.example.johan.garbarino";
-activity="MainActivity"
+activity="ProductListActivity"
 
 if [ $1 = "com" ]; then
     first=1;

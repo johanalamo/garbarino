@@ -12,15 +12,15 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 
 
-class AdapterProductList(private val data: Array<Product>, private val context:AppCompatActivity) :
-    RecyclerView.Adapter<AdapterProductList.MyViewHolder>() {
+class ProductListAdapter(private val data: Array<Product>, private val context:AppCompatActivity) :
+    RecyclerView.Adapter<ProductListAdapter.MyViewHolder>() {
 
     class MyViewHolder(val linearLyt: LinearLayout) : RecyclerView.ViewHolder(linearLyt){
         private val myImageView: ImageView = itemView.findViewById<ImageView>(R.id.imgProduct)
         fun updateImageWithUrl(url: String) =  Picasso.with(itemView.context).load(url).into(myImageView)
     }
     // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterProductList.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListAdapter.MyViewHolder {
         // create a new view
         val linearLyt = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_product_list_recycler_view, parent, false) as LinearLayout

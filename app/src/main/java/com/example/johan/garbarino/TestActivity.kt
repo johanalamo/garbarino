@@ -17,16 +17,16 @@ class TestActivity : AppCompatActivity() {
         setContentView(R.layout.layout_test)
          
       /* Called on Activity onCreate() */
-      var viewModel:MyViewModel = ViewModelProviders.of(this).get(MyViewModel::class.java)
-      viewModel.getUsername().observe(this, 
+      var viewModel:ProductListViewModel = ViewModelProviders.of(this).get(ProductListViewModel::class.java)
+      viewModel.getProductList().observe(this,
                Observer { 
                   valor -> updateUI(valor) 
                   }
       )
       /*  Called if there is no active network request */
-      viewModel.initNetworkRequest()       
+//      viewModel.initNetworkRequest()
       btnTest.setOnClickListener {
-               viewModel.getProductListData()
+               viewModel.loadProductListData()
          }
    }
    

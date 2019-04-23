@@ -1,5 +1,5 @@
 
-==lun abr 22 18:17:30 -03 2019=======
+==lun abr 22 23:48:10 -03 2019=======
 > Task :app:preBuild UP-TO-DATE
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:compileDebugAidl NO-SOURCE
@@ -13,7 +13,13 @@
 > Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
 > Task :app:processDebugManifest UP-TO-DATE
 > Task :app:processDebugResources UP-TO-DATE
+
 > Task :app:compileDebugKotlin
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/ProductDetailsActivity.kt: (44, 30): Unsafe use of a nullable receiver of type Bundle?
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/ProductDetailsActivity.kt: (44, 30): Type mismatch: inferred type is String? but String was expected
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/ProductDetailsActivity.kt: (73, 28): Unnecessary non-null assertion (!!) on a non-null receiver of type ProductReviewsResponse
+w: /home/johan/androidprojects/garbarino/app/src/main/java/com/example/johan/garbarino/ProductDetailsActivity.kt: (73, 41): Unnecessary non-null assertion (!!) on a non-null receiver of type Item
+
 > Task :app:prepareLintJar UP-TO-DATE
 > Task :app:generateDebugSources UP-TO-DATE
 > Task :app:javaPreCompileDebug
@@ -36,5 +42,5 @@
 > Task :app:packageDebug
 > Task :app:assembleDebug
 
-BUILD SUCCESSFUL in 1s
+BUILD SUCCESSFUL in 20s
 26 actionable tasks: 5 executed, 21 up-to-date

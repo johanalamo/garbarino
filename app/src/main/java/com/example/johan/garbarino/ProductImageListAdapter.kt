@@ -9,8 +9,8 @@ import com.squareup.picasso.Picasso;
 import android.support.v7.app.AppCompatActivity
 
 
-class AdapterProductImageList(private val data: Array<Image>, private val context:AppCompatActivity) :
-    RecyclerView.Adapter<AdapterProductImageList.MyViewHolder>() {
+class ProductImageListAdapter(private val data: Array<Image>, private val context:AppCompatActivity) :
+    RecyclerView.Adapter<ProductImageListAdapter.MyViewHolder>() {
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -22,7 +22,7 @@ class AdapterProductImageList(private val data: Array<Image>, private val contex
     }
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): AdapterProductImageList.MyViewHolder {
+                                    viewType: Int): ProductImageListAdapter.MyViewHolder {
         // create a new view
         val linearLyt = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_product_image_list_recycler_view, parent, false) as LinearLayout

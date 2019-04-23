@@ -4,19 +4,13 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.graphics.*
-import android.widget.ImageView
-import com.squareup.picasso.Picasso;
-import android.content.Intent
-import android.provider.Settings.System.getString
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
-import kotlinx.android.synthetic.main.layout_product_image_list_recycler_view.view.*
 import kotlinx.android.synthetic.main.layout_product_review_list_recycler_view.view.*
 
 
-class AdapterProductReviewList(private val data: ArrayList<Review>, private val context:AppCompatActivity) :
-    RecyclerView.Adapter<AdapterProductReviewList.MyViewHolder>() {
+class ProductReviewListAdapter(private val data: ArrayList<Review>, private val context:AppCompatActivity) :
+    RecyclerView.Adapter<ProductReviewListAdapter.MyViewHolder>() {
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -27,7 +21,7 @@ class AdapterProductReviewList(private val data: ArrayList<Review>, private val 
     }
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): AdapterProductReviewList.MyViewHolder {
+                                    viewType: Int): ProductReviewListAdapter.MyViewHolder {
         // create a new view
 
         val linearLyt = LayoutInflater.from(parent.context)

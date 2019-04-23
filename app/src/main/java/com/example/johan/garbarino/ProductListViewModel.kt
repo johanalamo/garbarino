@@ -11,34 +11,15 @@ import com.example.johan.garbarino.Data
 import com.example.johan.garbarino.ProductListService
 import com.example.johan.garbarino.ProductListResponse
 import android.os.SystemClock
-
-
-
-class User (
-    var id:Int? = 0,
-    var name:String? = ""
-)
-//http://www.albertgao.xyz/2018/04/13/why-unresolved-reference-for-viewmodelproviders/
-
 //https://medium.com/rocknnull/exploring-kotlin-using-android-architecture-components-and-vice-versa-aa16e600041a
 
 
 
 
-class MyViewModel : ViewModel() {
-   private val username = MutableLiveData<ProductListResponse>()
+class ProductListViewModel : ViewModel() {
+   private val productList = MutableLiveData<ProductListResponse>()
 
-    fun initNetworkRequest() {
-        /* expensive operation, e.g. network request */
-//        username.value = "Peter"
-    }
-
-    fun initNetworkRequestDos() {
-        /* expensive operation, e.g. network request */
-//        username.value = "Otro valor posterior"
-    }
-
-    fun getProductListData() {
+    fun loadProductListData() {
         /* expensive operation, e.g. network request */
 //        username.value = "empezamos con getproduct list data"
          val retrofit = Retrofit.Builder()
@@ -53,27 +34,16 @@ class MyViewModel : ViewModel() {
                   Data.productList = response.body()!!
                   Data.productListLoaded = true
                   SystemClock.sleep(1000)
-//                  username.value = "Que de pinga, volvio con la data del servidor"
-                  username.value = Data.productList
-
-//                  createRecyclerViewProductList(Data.productList.items)
+                  productList.value = Data.productList
                }
             }
             override fun onFailure(call: retrofit2.Call<ProductListResponse>, t: Throwable) {
                Data.productDetailsLoaded = false
             }
          })
-        
-        
-        
     }
-
-
-
-
-
-    fun getUsername(): LiveData<ProductListResponse> {
-        return username
+    fun getProductList(): LiveData<ProductListResponse> {
+        return productList
     }
 }
 
