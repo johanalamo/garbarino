@@ -55,6 +55,7 @@ if [ $1 = "run" ]; then
     adb -d install "`pwd`/app/build/outputs/apk/debug/app-debug.apk" &&
     #anterior manejarla con $? 0->exito   otro-> fall{o
     adb shell am start -n "${app}/${app}.${activity}" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER;
+    date;
     exit;
 fi;
 if [ $1 = "install" ]; then

@@ -1,4 +1,4 @@
-package com.example.johan.garbarino
+package com.example.johan.garbarino.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.widget.LinearLayout
 import android.widget.ImageView
 import com.squareup.picasso.Picasso;
 import android.support.v7.app.AppCompatActivity
+import com.example.johan.garbarino.response.Image
+import com.example.johan.garbarino.R
 
 
 class ProductImageListAdapter(private val data: Array<Image>, private val context:AppCompatActivity) :
@@ -22,7 +24,7 @@ class ProductImageListAdapter(private val data: Array<Image>, private val contex
     }
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): ProductImageListAdapter.MyViewHolder {
+                                    viewType: Int): MyViewHolder {
         // create a new view
         val linearLyt = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_product_image_list_recycler_view, parent, false) as LinearLayout

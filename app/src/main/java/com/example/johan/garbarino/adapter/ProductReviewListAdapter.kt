@@ -1,4 +1,4 @@
-package com.example.johan.garbarino
+package com.example.johan.garbarino.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
+import com.example.johan.garbarino.R
+import com.example.johan.garbarino.response.Review
 import kotlinx.android.synthetic.main.layout_product_review_list_recycler_view.view.*
 
 
@@ -16,17 +18,13 @@ class ProductReviewListAdapter(private val data: ArrayList<Review>, private val 
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder.
     // Each data item is just a string in this case that is shown in a TextView.
-    class MyViewHolder(val linearLyt: LinearLayout) : RecyclerView.ViewHolder(linearLyt){
+    class MyViewHolder(val linearLyt: LinearLayout) : RecyclerView.ViewHolder(linearLyt){    }
 
-    }
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): ProductReviewListAdapter.MyViewHolder {
-        // create a new view
-
+                                    viewType: Int): MyViewHolder {
         val linearLyt = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_product_review_list_recycler_view, parent, false) as LinearLayout
-        // set the view's size, margins, paddings and layout parameters
         return MyViewHolder(linearLyt)
     }
 

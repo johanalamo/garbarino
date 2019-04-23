@@ -1,4 +1,4 @@
-package com.example.johan.garbarino
+package com.example.johan.garbarino.response
 
 import com.google.gson.annotations.SerializedName
 
@@ -13,7 +13,8 @@ class Item {
     var id:String? = null
 
     @SerializedName("review_statistics")
-    var reviewStatistics: ReviewStatistics? = ReviewStatistics()
+    var reviewStatistics: ReviewStatistics? =
+        ReviewStatistics()
 
     @SerializedName("reviews")
     var reviews: Array<Review>? = arrayOf()

@@ -1,4 +1,4 @@
-package com.example.johan.mvvm
+package com.example.johan.garbarino.viewmodel
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
@@ -8,6 +8,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 import com.example.johan.garbarino.*
+import com.example.johan.garbarino.response.ProductDetailsResponse
+import com.example.johan.garbarino.service.ProductDetailsService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +21,7 @@ class ProductDetailsViewModel : ViewModel() {
 
     fun loadProductDetailsData(productId:String) {
         val retrofit = Retrofit.Builder()
-            .baseUrl(Data.getUrlProductDetails(productId))
+            .baseUrl(ConfigApp.getUrlProductDetails(productId))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(ProductDetailsService::class.java)
@@ -27,16 +29,11 @@ class ProductDetailsViewModel : ViewModel() {
         call.enqueue(object : Callback<ProductDetailsResponse> {
             override fun onResponse(call: Call<ProductDetailsResponse>, response: Response<ProductDetailsResponse>) {
                 if (response.code() == 200) {
-                    Data.productDetails = response.body()!!
-                    Data.productDetailsLoaded = true
-                    productDetails.value = Data.productDetails
-//                    showDetailsOnUi(Data.productDetails)
-//                    createRecyclerViewImageList(Data.getCompleteImageList())
-
+                    productDetails.value = response.body()!!
                 }
             }
             override fun onFailure(call: Call<ProductDetailsResponse>, t: Throwable) {
-                Data.productDetailsLoaded = false
+                println ("Error on connection on ProductDetailsViewModel")
             }
         })
     }

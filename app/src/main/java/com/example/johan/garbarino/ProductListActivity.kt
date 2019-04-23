@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.arch.lifecycle.Observer
-import  com.example.johan.mvvm.ProductListViewModel
+import  com.example.johan.garbarino.viewmodel.ProductListViewModel
 import android.arch.lifecycle.ViewModelProviders
+import com.example.johan.garbarino.adapter.ProductListAdapter
+import com.example.johan.garbarino.response.Product
 
 class ProductListActivity : AppCompatActivity() {
 
@@ -19,7 +21,6 @@ class ProductListActivity : AppCompatActivity() {
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
       setContentView(R.layout.layout_main_activity)
-      Data.productListLoaded = false
 
       viewModel = ViewModelProviders.of(this).get(ProductListViewModel::class.java)
       viewModel.getProductList().observe(this,
