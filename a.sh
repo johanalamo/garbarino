@@ -83,6 +83,43 @@ if [ $1 = "log" ]; then
     fi;
     exit;
 fi;
+if [ $1 = "downloaddata" ]; then
+      dir="resources/"
+      url="http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/"
+#      rm -R $dir
+#      mkdir $dir;
+		products_id=( "0982a08485" "3d77bc3a98" "a20b55dd53" "5b119b7e68" "fac1a6c3d1" "83002e672d" "8f1dcc0c42" "62cb75e2fa" "dfe199bd8c" "f6f8b547a5");
+      echo "downloading list, details and reviews (${#products_id[@]} products)";
+
+      curl -s $url | jq '.' > ${dir}list_products.txt
+		for (( i=0; i < ${#products_id[@]} ; i=i+1 )) #for from 0 to total elements (cols x rows)
+		do
+         p=${products_id[$i]}
+         curl -s "${url}${p}/" | jq '.' > ${dir}details${p}.txt
+         curl -s "${url}${p}/reviews/" | jq '.' > ${dir}reviews${p}.txt
+			echo "product id: ${products_id[$i]}"  ;
+      done;
+      
+      echo;
+      echo "downloading images";
+      cat "${dir}*.txt"
+      
+#      cat resources/*.txt | egrep "\"url\"|\"image_url\"" > ${dir}list_images.txt
+      
+      exit
+   exit
+fi;
+if [ $1 = "downloadimages" ]; then
+      dir="resources/"
+      dirimages=${dir}images
+      mkdir $dirimages
+      
+      for i in `cat ${dir}list_images.txt`; do
+         wget $i;
+      done
+   
+   exit
+fi;
 
 echo "unrecognized option";
 
