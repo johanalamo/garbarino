@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.arch.lifecycle.Observer
 import  com.example.johan.garbarino.viewmodel.ProductListViewModel
 import android.arch.lifecycle.ViewModelProviders
+import android.widget.Toast
 import com.example.johan.garbarino.adapter.ProductListAdapter
 import com.example.johan.garbarino.response.Product
 
@@ -29,6 +30,7 @@ class ProductListActivity : AppCompatActivity() {
                   }
       )
       viewModel.loadProductListData()
+      Toast.makeText(this, FakeData.productListJSON, Toast.LENGTH_LONG).show()
    }
 
    fun createRecyclerViewProductList(data:Array<Product>){

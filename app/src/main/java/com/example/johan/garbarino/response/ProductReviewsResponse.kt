@@ -10,11 +10,10 @@ class ProductReviewsResponse {
 class Item {
 
     @SerializedName("id")
-    var id:String? = null
+    var id:String? = ""
 
     @SerializedName("review_statistics")
-    var reviewStatistics: ReviewStatistics? =
-        ReviewStatistics()
+    var reviewStatistics: ReviewStatistics? = ReviewStatistics()
 
     @SerializedName("reviews")
     var reviews: Array<Review>? = arrayOf()

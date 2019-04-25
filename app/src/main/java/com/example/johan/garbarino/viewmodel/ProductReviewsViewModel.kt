@@ -32,10 +32,12 @@ class ProductReviewsViewModel : ViewModel() {
                 if (response.code() == 200) {
                     productReviews.value = response.body()!!
                     println ("===================================================ProductReviewsViewModel: entra en response.code = 200")
-                }
+                }else
+                    productReviews.value = FakeData.getProductReviews(productId)
             }
             override fun onFailure(call: Call<ProductReviewsResponse>, t: Throwable) {
                 println ("===================================================Error on connection on ProductReviewsViewModel")
+                productReviews.value = FakeData.getProductReviews(productId)
             }
         })
     }

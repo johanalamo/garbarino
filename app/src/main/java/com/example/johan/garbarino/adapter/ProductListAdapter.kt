@@ -20,7 +20,10 @@ class ProductListAdapter(private val data: Array<Product>, private val context:A
 
     class MyViewHolder(val linearLyt: LinearLayout) : RecyclerView.ViewHolder(linearLyt){
         private val myImageView: ImageView = itemView.findViewById<ImageView>(R.id.imgProduct)
-        fun updateImageWithUrl(url: String) =  Picasso.with(itemView.context).load(url).into(myImageView)
+        fun updateImageWithUrl(url: String) {
+            //=  Picasso.with(itemView.context).load(url).into(myImageView)
+//            myImage
+        }
     }
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

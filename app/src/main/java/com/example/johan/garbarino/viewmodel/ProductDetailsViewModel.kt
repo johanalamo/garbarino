@@ -28,12 +28,11 @@ class ProductDetailsViewModel : ViewModel() {
         val call = service.getProductDetailsData()
         call.enqueue(object : Callback<ProductDetailsResponse> {
             override fun onResponse(call: Call<ProductDetailsResponse>, response: Response<ProductDetailsResponse>) {
-                if (response.code() == 200) {
-                    productDetails.value = response.body()!!
-                }
+                    productDetails.value = if (response.code() == 200) response.body()!! else FakeData.getProductDetails(productId)
             }
             override fun onFailure(call: Call<ProductDetailsResponse>, t: Throwable) {
                 println ("Error on connection on ProductDetailsViewModel")
+               productDetails.value = FakeData.getProductDetails(productId)                
             }
         })
     }
