@@ -3,7 +3,12 @@ package com.example.johan.garbarino
 import com.example.johan.garbarino.response.ProductListResponse
 import com.example.johan.garbarino.response.ProductDetailsResponse
 import com.example.johan.garbarino.response.ProductReviewsResponse
+
+import android.support.v7.app.AppCompatActivity
+import android.graphics.drawable.Drawable
+   
 import com.google.gson.Gson
+import android.widget.ImageView
 
 class FakeData {
     companion object {
@@ -11,12 +16,9 @@ class FakeData {
         fun getUrlProductDetails (id:String):String = "http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/" + id + "/"
         fun getUrlProductReviews (id:String):String = "http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/" + id + "/reviews/"
 
-        //null to show all comments
-        val productListJSON: String = """{"items": [{"id": "0982a08485","description": "Smart TV LG 43 \" 4K Ultra HD 43UJ6560","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/ea1ad44603acda220729bbbb8afc70c2feb381f32044ccc0a02383242c34142f","price": 15999,"list_price": 19999,"discount": 20},{"id": "3d77bc3a98","description": "TV LED Philips 32 \" HD 32PHG5001/77","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tv-led-philips-32-hd-32phg500177/de3c95989891cf0494772062a0d75f11ee563d874c4d832414339fb31491d057","price": 5999,"list_price": 6999,"discount": 14},{"id": "a20b55dd53","description": "Smart TV Philips 43 \" Full HD 43PFG5102/77","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-philips-43-full-hd-43pfg510277/0377d2ef6ef718783f5efacbe1f7e67df1859f037351487221a85131e8a88351","price": 10999,"list_price": 12999,"discount": 15},{"id": "5b119b7e68","description": "Smart TV HISENSE 32 \" HD LED HLE3217RT","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-hisense-32-hd-led-hle3217rt/0a01725e7b8ed7ab4e05f00980792ad2180ab2fe95094c85aef7060b2d96aa6f","price": 6999,"list_price": 7499,"discount": 7},{"id": "fac1a6c3d1","description": "Lavarropas Automático Drean 5 KG CONCEPT 5.05 V1 Blanco","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/lavarropas-automatico-drean-5-kg-concept-5.05-v1-blanco/18125a5111609f25787a0fe43ba91dbca5f3fd36d575ee6ede509bca502f7018","price": 7699,"list_price": 9599,"discount": 20},{"id": "83002e672d","description": "Pava Eléctrica ATMA PE5106E Blanco","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-atma-pe5106e-blanco/b0732f6005a7791ec8794c96a4feaa68d585b4e70d3f73c475db1a0f1056745f","price": 689,"list_price": 899,"discount": 23},{"id": "8f1dcc0c42","description": "Pava Eléctrica Philips HD4691/20 Negro","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-philips-hd469120-negro/0a73f76e0cfe614adf28db6d0331e5da2fc53f99553a7903740f58c01e180e4a","price": 1399,"list_price": 1499,"discount": 7},{"id": "62cb75e2fa","description": "Tostadora ATMA TO8013E","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tostadora-atma-to8013e/97ae407e6ec524295b59e9c12f5bc811a65a53b6e8d58e4262c8dfe5a31609fc","price": 799,"list_price": 799,"discount": 0},{"id": "dfe199bd8c","description": "Horno eléctrico ATMA 23 Lts HG2310E ","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/horno-electrico-atma-23-lts-hg2310e/569dffd210894a36ce78e0c38eeed8fecc28930c3543faf06201713425b062d9","price": 2249,"list_price": 2799,"discount": 20},{"id": "f6f8b547a5","description": "SET de 2 Banquetas Taburetes Hidráulicos Color Negro (2 unid","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/set-de-2-banquetas-taburetes-hidraulicos-color-negro-2-unid/b1a20f485cd8b917f47833f9b266c1bddb8cebc57dd623fa3495251cb127b715","price": 2199,"list_price": 3199,"discount": 31}]}"""
-
         fun getProductList(): ProductListResponse {
             var gson = Gson()
-            var jsonString = FakeData.productListJSON;
+            var jsonString = """{"items": [{"id": "0982a08485","description": "Smart TV LG 43 \" 4K Ultra HD 43UJ6560","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/ea1ad44603acda220729bbbb8afc70c2feb381f32044ccc0a02383242c34142f","price": 15999,"list_price": 19999,"discount": 20},{"id": "3d77bc3a98","description": "TV LED Philips 32 \" HD 32PHG5001/77","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tv-led-philips-32-hd-32phg500177/de3c95989891cf0494772062a0d75f11ee563d874c4d832414339fb31491d057","price": 5999,"list_price": 6999,"discount": 14},{"id": "a20b55dd53","description": "Smart TV Philips 43 \" Full HD 43PFG5102/77","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-philips-43-full-hd-43pfg510277/0377d2ef6ef718783f5efacbe1f7e67df1859f037351487221a85131e8a88351","price": 10999,"list_price": 12999,"discount": 15},{"id": "5b119b7e68","description": "Smart TV HISENSE 32 \" HD LED HLE3217RT","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-hisense-32-hd-led-hle3217rt/0a01725e7b8ed7ab4e05f00980792ad2180ab2fe95094c85aef7060b2d96aa6f","price": 6999,"list_price": 7499,"discount": 7},{"id": "fac1a6c3d1","description": "Lavarropas Automático Drean 5 KG CONCEPT 5.05 V1 Blanco","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/lavarropas-automatico-drean-5-kg-concept-5.05-v1-blanco/18125a5111609f25787a0fe43ba91dbca5f3fd36d575ee6ede509bca502f7018","price": 7699,"list_price": 9599,"discount": 20},{"id": "83002e672d","description": "Pava Eléctrica ATMA PE5106E Blanco","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-atma-pe5106e-blanco/b0732f6005a7791ec8794c96a4feaa68d585b4e70d3f73c475db1a0f1056745f","price": 689,"list_price": 899,"discount": 23},{"id": "8f1dcc0c42","description": "Pava Eléctrica Philips HD4691/20 Negro","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-philips-hd469120-negro/0a73f76e0cfe614adf28db6d0331e5da2fc53f99553a7903740f58c01e180e4a","price": 1399,"list_price": 1499,"discount": 7},{"id": "62cb75e2fa","description": "Tostadora ATMA TO8013E","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tostadora-atma-to8013e/97ae407e6ec524295b59e9c12f5bc811a65a53b6e8d58e4262c8dfe5a31609fc","price": 799,"list_price": 799,"discount": 0},{"id": "dfe199bd8c","description": "Horno eléctrico ATMA 23 Lts HG2310E ","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/horno-electrico-atma-23-lts-hg2310e/569dffd210894a36ce78e0c38eeed8fecc28930c3543faf06201713425b062d9","price": 2249,"list_price": 2799,"discount": 20},{"id": "f6f8b547a5","description": "SET de 2 Banquetas Taburetes Hidráulicos Color Negro (2 unid","image_url": "//d3lfzbr90tctqz.cloudfront.net/epi/resource/r/set-de-2-banquetas-taburetes-hidraulicos-color-negro-2-unid/b1a20f485cd8b917f47833f9b266c1bddb8cebc57dd623fa3495251cb127b715","price": 2199,"list_price": 3199,"discount": 31}]}"""
             var data = gson.fromJson(jsonString, ProductListResponse::class.java)
             return data
         }
@@ -58,51 +60,52 @@ class FakeData {
             var data = gson.fromJson(jsonString, ProductReviewsResponse::class.java)
             return data
         }
-        
-        
-        fun getImageResourceId(id:String):Int{
-            return
-               when (id) {
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/horno-electrico-atma-23-lts-hg2310e/4f6c2165f4ac2aba0cc6da37cefe4636afe634e82e6008602e28eda529e5ba03"                       -> R.drawable.img01
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/horno-electrico-atma-23-lts-hg2310e/569dffd210894a36ce78e0c38eeed8fecc28930c3543faf06201713425b062d9"                       -> R.drawable.img02
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/horno-electrico-atma-23-lts-hg2310e/b050f7858c69afae49a214d083b6ebeb065284b8d605fddbe26cd79a7d9c815a"                       -> R.drawable.img03
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/horno-electrico-atma-23-lts-hg2310e/d193aa334e96ca141dfc4d6b6a344858dd6da6294bcd5020fb38c79f18910318"                       -> R.drawable.img04
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/lavarropas-automatico-drean-5-kg-concept-5.05-v1-blanco/18125a5111609f25787a0fe43ba91dbca5f3fd36d575ee6ede509bca502f7018"   -> R.drawable.img05
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/lavarropas-automatico-drean-5-kg-concept-5.05-v1-blanco/68ed2f7c817931ad87a36c153845840a6a434f376f95a1e262b54087f171a460"   -> R.drawable.img06
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/lavarropas-automatico-drean-5-kg-concept-5.05-v1-blanco/d26989c0fd70a3d9630a13e6dcad9f5d5a6f05a432e0d6aab0abdc024b0da303"   -> R.drawable.img07
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-atma-pe5106e-blanco/3b5d099882f9a81e847b08d945b3e3c5f5f59763dc3fa4a307ac2842280b9745"                        -> R.drawable.img08
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-atma-pe5106e-blanco/6424dd0ea0170c8dfebfea9ac89de4f0ef034e364d139b770d909f1f19a1048f"                        -> R.drawable.img09
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-atma-pe5106e-blanco/b0732f6005a7791ec8794c96a4feaa68d585b4e70d3f73c475db1a0f1056745f"                        -> R.drawable.img10
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-atma-pe5106e-blanco/c7718cc58d9d2cad950ffe9f88d3f699d8f6e4ea067119ab4300b5a4706d03c8"                        -> R.drawable.img11
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-philips-hd469120-negro/0a73f76e0cfe614adf28db6d0331e5da2fc53f99553a7903740f58c01e180e4a"                     -> R.drawable.img12
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-philips-hd469120-negro/1c545ce482a4df71184b40b75cc86fef2b9dfc85c17a9889adcc4c4cbd8f583a"                     -> R.drawable.img13
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-philips-hd469120-negro/4ec7a4b589194f808732d6243601c39c87187553d0cdab52367e453f39d886e3"                     -> R.drawable.img14
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-philips-hd469120-negro/5fc7ffa0a44c5210998bf272213dee67a0876ee3254b5867e0479cc20523e853"                      -> R.drawable.img15
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-philips-hd469120-negro/eddded33ffadd245bf8ada19cc7ff0149129048f6ce6d2123bafaf43fa5a26f6"                        -> R.drawable.img16
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/set-de-2-banquetas-taburetes-hidraulicos-color-negro-2-unid/298970b03c3e86e48fbc2d358afefdbe9e165d68e57e9297774800ce7698a87b" -> R.drawable.img17
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/set-de-2-banquetas-taburetes-hidraulicos-color-negro-2-unid/b1a20f485cd8b917f47833f9b266c1bddb8cebc57dd623fa3495251cb127b715" -> R.drawable.img18
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-hisense-32-hd-led-hle3217rt/0a01725e7b8ed7ab4e05f00980792ad2180ab2fe95094c85aef7060b2d96aa6f" -> R.drawable.img19
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-hisense-32-hd-led-hle3217rt/b77de9b5789c921cbc2cc81aa9bd99fe899567e13aef485cbe175b1effc36a00" -> R.drawable.img20
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-hisense-32-hd-led-hle3217rt/e9e8f8ad100ac696859da0511c6be7583b2b6cae68bfbba8a5a147889adf50cf" -> R.drawable.img21
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/03d8391777327897620474338fad81660ac7248fcf2509a2fff598c4b62f4c4e" -> R.drawable.img22
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/05a765cde5149d6d28cbaf7225b04f6681fc11009d3c2cef34b0a4fd5b1bbd08" -> R.drawable.img23
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/5600066aa177eafc37ae9096e147f5f71e3a10a9cf250221b89300317b32afdb" -> R.drawable.img24
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/a4776ddef6f6dde7380a10d59ea9b8c7444803003eb53885c8dfc5a1591eca43" -> R.drawable.img25
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/ac5cbc4000015ce7938663c98e8816bc21aca1422efaa91769952f61e0495033" -> R.drawable.img26
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/b9ef7569d116ab42226003035ab8ca1414b87e2b1f922c96c48d8ec6b9565861" -> R.drawable.img27
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/ea1ad44603acda220729bbbb8afc70c2feb381f32044ccc0a02383242c34142f" -> R.drawable.img28
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-philips-43-full-hd-43pfg510277/0377d2ef6ef718783f5efacbe1f7e67df1859f037351487221a85131e8a88351" -> R.drawable.img29
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-philips-43-full-hd-43pfg510277/a5f38088d29cc52b02f1f61c060d7de6b7fed81f70731a446b229169b3189561" -> R.drawable.img30
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-philips-43-full-hd-43pfg510277/e1bf921ef308b0319e83789e0d0026ca256f74a4b5b4bc0de8fafbc460d79f11" -> R.drawable.img31
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tostadora-atma-to8013e/31f73d976353c40438addfd3a090424f09e7f1f13e71b481b5deece923590285" -> R.drawable.img32
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tostadora-atma-to8013e/4fd3863396fd6e9925999590773f1e23c9f04c6a4f00ad496c9e727d82c9df23" -> R.drawable.img33
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tostadora-atma-to8013e/97ae407e6ec524295b59e9c12f5bc811a65a53b6e8d58e4262c8dfe5a31609fc" -> R.drawable.img34
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tv-led-philips-32-hd-32phg500177/6ba3367923b13ed5377b263569ffddda38808f118964a3fb218785b425207dd0" -> R.drawable.img35
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tv-led-philips-32-hd-32phg500177/d2341e364aba4d4a4848b807fc7d366340d587be850df0e7d08c1cdf77c22731" -> R.drawable.img36
-                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tv-led-philips-32-hd-32phg500177/de3c95989891cf0494772062a0d75f11ee563d874c4d832414339fb31491d057" -> R.drawable.img37
-                  else -> 0
-               }
-        }
+
+        fun getFakeDrawableFor(context:AppCompatActivity, url:String):Drawable{
+            var d:Drawable?
+            d = 
+               when (url) {
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/horno-electrico-atma-23-lts-hg2310e/4f6c2165f4ac2aba0cc6da37cefe4636afe634e82e6008602e28eda529e5ba03"                            -> context.getDrawable(R.drawable.img01)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/horno-electrico-atma-23-lts-hg2310e/569dffd210894a36ce78e0c38eeed8fecc28930c3543faf06201713425b062d9"                            -> context.getDrawable(R.drawable.img02)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/horno-electrico-atma-23-lts-hg2310e/b050f7858c69afae49a214d083b6ebeb065284b8d605fddbe26cd79a7d9c815a"                            -> context.getDrawable(R.drawable.img03)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/horno-electrico-atma-23-lts-hg2310e/d193aa334e96ca141dfc4d6b6a344858dd6da6294bcd5020fb38c79f18910318"                            -> context.getDrawable(R.drawable.img04)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/lavarropas-automatico-drean-5-kg-concept-5.05-v1-blanco/18125a5111609f25787a0fe43ba91dbca5f3fd36d575ee6ede509bca502f7018"        -> context.getDrawable(R.drawable.img05)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/lavarropas-automatico-drean-5-kg-concept-5.05-v1-blanco/68ed2f7c817931ad87a36c153845840a6a434f376f95a1e262b54087f171a460"        -> context.getDrawable(R.drawable.img06)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/lavarropas-automatico-drean-5-kg-concept-5.05-v1-blanco/d26989c0fd70a3d9630a13e6dcad9f5d5a6f05a432e0d6aab0abdc024b0da303"        -> context.getDrawable(R.drawable.img07)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-atma-pe5106e-blanco/3b5d099882f9a81e847b08d945b3e3c5f5f59763dc3fa4a307ac2842280b9745"                             -> context.getDrawable(R.drawable.img08)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-atma-pe5106e-blanco/6424dd0ea0170c8dfebfea9ac89de4f0ef034e364d139b770d909f1f19a1048f"                             -> context.getDrawable(R.drawable.img09)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-atma-pe5106e-blanco/b0732f6005a7791ec8794c96a4feaa68d585b4e70d3f73c475db1a0f1056745f"                             -> context.getDrawable(R.drawable.img10)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-atma-pe5106e-blanco/c7718cc58d9d2cad950ffe9f88d3f699d8f6e4ea067119ab4300b5a4706d03c8"                             -> context.getDrawable(R.drawable.img11)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-philips-hd469120-negro/0a73f76e0cfe614adf28db6d0331e5da2fc53f99553a7903740f58c01e180e4a"                          -> context.getDrawable(R.drawable.img12)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-philips-hd469120-negro/1c545ce482a4df71184b40b75cc86fef2b9dfc85c17a9889adcc4c4cbd8f583a"                          -> context.getDrawable(R.drawable.img13)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-philips-hd469120-negro/4ec7a4b589194f808732d6243601c39c87187553d0cdab52367e453f39d886e3"                          -> context.getDrawable(R.drawable.img14)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-philips-hd469120-negro/5fc7ffa0a44c5210998bf272213dee67a0876ee3254b5867e0479cc20523e853"                          -> context.getDrawable(R.drawable.img15)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/pava-electrica-philips-hd469120-negro/eddded33ffadd245bf8ada19cc7ff0149129048f6ce6d2123bafaf43fa5a26f6"                          -> context.getDrawable(R.drawable.img16)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/set-de-2-banquetas-taburetes-hidraulicos-color-negro-2-unid/298970b03c3e86e48fbc2d358afefdbe9e165d68e57e9297774800ce7698a87b"    -> context.getDrawable(R.drawable.img17)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/set-de-2-banquetas-taburetes-hidraulicos-color-negro-2-unid/b1a20f485cd8b917f47833f9b266c1bddb8cebc57dd623fa3495251cb127b715"    -> context.getDrawable(R.drawable.img18)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-hisense-32-hd-led-hle3217rt/0a01725e7b8ed7ab4e05f00980792ad2180ab2fe95094c85aef7060b2d96aa6f"                           -> context.getDrawable(R.drawable.img19)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-hisense-32-hd-led-hle3217rt/b77de9b5789c921cbc2cc81aa9bd99fe899567e13aef485cbe175b1effc36a00"                           -> context.getDrawable(R.drawable.img20)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-hisense-32-hd-led-hle3217rt/e9e8f8ad100ac696859da0511c6be7583b2b6cae68bfbba8a5a147889adf50cf"                           -> context.getDrawable(R.drawable.img21)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/03d8391777327897620474338fad81660ac7248fcf2509a2fff598c4b62f4c4e"                            -> context.getDrawable(R.drawable.img22)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/05a765cde5149d6d28cbaf7225b04f6681fc11009d3c2cef34b0a4fd5b1bbd08"                            -> context.getDrawable(R.drawable.img23)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/5600066aa177eafc37ae9096e147f5f71e3a10a9cf250221b89300317b32afdb"                            -> context.getDrawable(R.drawable.img24)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/a4776ddef6f6dde7380a10d59ea9b8c7444803003eb53885c8dfc5a1591eca43"                            -> context.getDrawable(R.drawable.img25)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/ac5cbc4000015ce7938663c98e8816bc21aca1422efaa91769952f61e0495033"                            -> context.getDrawable(R.drawable.img26)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/b9ef7569d116ab42226003035ab8ca1414b87e2b1f922c96c48d8ec6b9565861"                            -> context.getDrawable(R.drawable.img27)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-lg-43-4k-ultra-hd-43uj6560/ea1ad44603acda220729bbbb8afc70c2feb381f32044ccc0a02383242c34142f"                            -> context.getDrawable(R.drawable.img28)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-philips-43-full-hd-43pfg510277/0377d2ef6ef718783f5efacbe1f7e67df1859f037351487221a85131e8a88351"                        -> context.getDrawable(R.drawable.img29)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-philips-43-full-hd-43pfg510277/a5f38088d29cc52b02f1f61c060d7de6b7fed81f70731a446b229169b3189561"                        -> context.getDrawable(R.drawable.img30)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/smart-tv-philips-43-full-hd-43pfg510277/e1bf921ef308b0319e83789e0d0026ca256f74a4b5b4bc0de8fafbc460d79f11"                        -> context.getDrawable(R.drawable.img31)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tostadora-atma-to8013e/31f73d976353c40438addfd3a090424f09e7f1f13e71b481b5deece923590285"                                         -> context.getDrawable(R.drawable.img32)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tostadora-atma-to8013e/4fd3863396fd6e9925999590773f1e23c9f04c6a4f00ad496c9e727d82c9df23"                                         -> context.getDrawable(R.drawable.img33)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tostadora-atma-to8013e/97ae407e6ec524295b59e9c12f5bc811a65a53b6e8d58e4262c8dfe5a31609fc"                                         -> context.getDrawable(R.drawable.img34)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tv-led-philips-32-hd-32phg500177/6ba3367923b13ed5377b263569ffddda38808f118964a3fb218785b425207dd0"                               -> context.getDrawable(R.drawable.img35)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tv-led-philips-32-hd-32phg500177/d2341e364aba4d4a4848b807fc7d366340d587be850df0e7d08c1cdf77c22731"                               -> context.getDrawable(R.drawable.img36)
+                  "http://d3lfzbr90tctqz.cloudfront.net/epi/resource/r/tv-led-philips-32-hd-32phg500177/de3c95989891cf0494772062a0d75f11ee563d874c4d832414339fb31491d057"                               -> context.getDrawable(R.drawable.img37)
+                  else -> context.getDrawable(R.drawable.img37)
+               }        
+               return d
+         }
     }
 }
 

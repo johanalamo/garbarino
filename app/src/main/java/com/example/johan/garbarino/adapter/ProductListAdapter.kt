@@ -13,17 +13,28 @@ import android.support.v7.app.AppCompatActivity
 import com.example.johan.garbarino.response.Product
 import com.example.johan.garbarino.ProductDetailsActivity
 import com.example.johan.garbarino.R
+import com.squareup.picasso.Callback
 
+import com.example.johan.garbarino.FakeData
 
 class ProductListAdapter(private val data: Array<Product>, private val context:AppCompatActivity) :
     RecyclerView.Adapter<ProductListAdapter.MyViewHolder>() {
 
-    class MyViewHolder(val linearLyt: LinearLayout) : RecyclerView.ViewHolder(linearLyt){
+    class MyViewHolder(val linearLyt: LinearLayout) : RecyclerView.ViewHolder(linearLyt) {
         private val myImageView: ImageView = itemView.findViewById<ImageView>(R.id.imgProduct)
-        fun updateImageWithUrl(url: String) {
-            //=  Picasso.with(itemView.context).load(url).into(myImageView)
-//            myImage
-        }
+        
+        fun updateImageWithUrl(url: String, c:AppCompatActivity) {
+         Picasso.with(itemView.context).load(url).into(myImageView,
+             object
+                 : Callback {
+                 override fun onSuccess() {                 }
+                 override fun onError() {
+                     linearLyt.imgProduct.setImageDrawable(FakeData.getFakeDrawableFor(c, url))
+                     println("********************error en la carga: " + url)
+                 }
+             }
+            )
+            }
     }
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -36,7 +47,8 @@ class ProductListAdapter(private val data: Array<Product>, private val context:A
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.updateImageWithUrl("http:" + data[position].image_url)
+        holder.updateImageWithUrl("http:" + data[position].image_url, context)
+//        holder.linearLyt.imgProduct.setImageDrawable(context.getDrawable(R.drawable.img32))
         holder.linearLyt.txtDescription.text  = data[position].description
         holder.linearLyt.txtPrice.text        = "$ " + data[position].price.toString()
         if (data[position].discount == 0)

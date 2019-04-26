@@ -22,8 +22,6 @@ class ProductListViewModel : ViewModel() {
    private val productList = MutableLiveData<ProductListResponse>()
 
     fun loadProductListData() {
-        /* expensive operation, e.g. network request */
-//        username.value = "empezamos con getproduct list data"
          val retrofit = Retrofit.Builder()
             .baseUrl(ConfigApp.getUrlProductList())
             .addConverterFactory(GsonConverterFactory.create())

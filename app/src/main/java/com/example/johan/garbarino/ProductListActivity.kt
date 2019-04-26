@@ -30,7 +30,6 @@ class ProductListActivity : AppCompatActivity() {
                   }
       )
       viewModel.loadProductListData()
-      Toast.makeText(this, FakeData.productListJSON, Toast.LENGTH_LONG).show()
    }
 
    fun createRecyclerViewProductList(data:Array<Product>){
