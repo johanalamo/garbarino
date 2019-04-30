@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import com.example.johan.garbarino.*
 import com.example.johan.garbarino.response.ProductReviewsResponse
 import com.example.johan.garbarino.response.Review
-import com.example.johan.garbarino.service.ProductReviewsService
+import com.example.johan.garbarino.service.ProductService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,11 +21,11 @@ class ProductReviewsViewModel : ViewModel() {
 
     fun loadProductReviewsData(productId:String) {
         val retrofit = Retrofit.Builder()
-            .baseUrl(ConfigApp.getUrlProductReviews(productId))
+            .baseUrl(ConfigApp.getUrlProductList())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        val service = retrofit.create(ProductReviewsService::class.java)
-        val call = service.getProductReviewsData()
+        val service = retrofit.create(ProductService::class.java)
+        val call = service.getProductReviewsData(productId)
         call.enqueue(object : Callback<ProductReviewsResponse> {
             override fun onResponse(call: Call<ProductReviewsResponse>, response: Response<ProductReviewsResponse>) {
                 println ("===================================================ProductReviewsViewModel:entra en response")
@@ -66,4 +66,3 @@ class ProductReviewsViewModel : ViewModel() {
     }
 
 }
-

@@ -52,11 +52,9 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
     private fun loadProductDetailsViewModel() {
         productDetailsViewModel = ViewModelProviders.of(this).get(ProductDetailsViewModel::class.java)
-        productDetailsViewModel.getProductDetails().observe(this,
-            Observer { productDetails ->
-                showDetailsOnUi(productDetails!!)
-                createRecyclerViewImageList(productDetails.resources!!.images)
-            }
+        productDetailsViewModel.getProductDetails().observe(
+            this,
+            Observer { productDetails -> showDetailsOnUi(productDetails!!)  }
         )
         productDetailsViewModel.loadProductDetailsData(this.productId)
     }
@@ -91,6 +89,7 @@ class ProductDetailsActivity : AppCompatActivity() {
             txtDiscount.text = res.discount.toString() + "% OFF"
             txtListPrice.setPaintFlags(txtListPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
         }
+        createRecyclerViewImageList(res.resources!!.images)
     }
 
     fun createRecyclerViewImageList(data:Array<Image>){

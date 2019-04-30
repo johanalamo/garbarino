@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 import com.example.johan.garbarino.ConfigApp
 import com.example.johan.garbarino.FakeData
-import com.example.johan.garbarino.service.ProductListService
+import com.example.johan.garbarino.service.ProductService
 import com.example.johan.garbarino.response.ProductListResponse
 import com.google.gson.Gson
 
@@ -26,7 +26,7 @@ class ProductListViewModel : ViewModel() {
             .baseUrl(ConfigApp.getUrlProductList())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-         val service = retrofit.create(ProductListService::class.java)
+         val service = retrofit.create(ProductService::class.java)
          val call = service.getProductListData()
          call.enqueue(object : retrofit2.Callback<ProductListResponse> {
             override fun onResponse(call: retrofit2.Call<ProductListResponse>, response: retrofit2.Response<ProductListResponse>) {
@@ -42,4 +42,3 @@ class ProductListViewModel : ViewModel() {
         return productList
     }
 }
-
