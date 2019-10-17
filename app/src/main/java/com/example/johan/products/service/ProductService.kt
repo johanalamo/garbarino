@@ -1,8 +1,8 @@
-package com.example.johan.garbarino.service
+package com.example.johan.products.service
 
-import com.example.johan.garbarino.response.ProductDetailsResponse
-import com.example.johan.garbarino.response.ProductListResponse
-import com.example.johan.garbarino.response.ProductReviewsResponse
+import com.example.johan.products.response.ProductDetailsResponse
+import com.example.johan.products.response.ProductListResponse
+import com.example.johan.products.response.ProductReviewsResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

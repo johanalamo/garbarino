@@ -1,4 +1,4 @@
-package com.example.johan.garbarino.viewmodel
+package com.example.johan.products.viewmodel
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
@@ -7,10 +7,10 @@ import android.arch.lifecycle.ViewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-import com.example.johan.garbarino.ConfigApp
-import com.example.johan.garbarino.FakeData
-import com.example.johan.garbarino.service.ProductService
-import com.example.johan.garbarino.response.ProductListResponse
+import com.example.johan.products.ConfigApp
+import com.example.johan.products.FakeData
+import com.example.johan.products.service.ProductService
+import com.example.johan.products.response.ProductListResponse
 import com.google.gson.Gson
 
 //https://medium.com/rocknnull/exploring-kotlin-using-android-architecture-components-and-vice-versa-aa16e600041a

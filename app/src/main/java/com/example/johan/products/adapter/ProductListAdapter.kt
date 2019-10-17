@@ -1,4 +1,4 @@
-package com.example.johan.garbarino.adapter
+package com.example.johan.products.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -10,19 +10,19 @@ import android.widget.ImageView
 import com.squareup.picasso.Picasso;
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
-import com.example.johan.garbarino.response.Product
-import com.example.johan.garbarino.ProductDetailsActivity
-import com.example.johan.garbarino.R
+import com.example.johan.products.response.Product
+import com.example.johan.products.ProductDetailsActivity
+import com.example.johan.products.R
 import com.squareup.picasso.Callback
 
-import com.example.johan.garbarino.FakeData
+import com.example.johan.products.FakeData
 
 class ProductListAdapter(private val data: Array<Product>, private val context:AppCompatActivity) :
     RecyclerView.Adapter<ProductListAdapter.MyViewHolder>() {
 
     class MyViewHolder(val linearLyt: LinearLayout) : RecyclerView.ViewHolder(linearLyt) {
         private val myImageView: ImageView = itemView.findViewById<ImageView>(R.id.imgProduct)
-        
+
         fun updateImageWithUrl(url: String, c:AppCompatActivity) {
          Picasso.with(itemView.context).load(url).into(myImageView,
              object

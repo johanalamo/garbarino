@@ -1,4 +1,4 @@
-package com.example.johan.garbarino.adapter
+package com.example.johan.products.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,12 +7,12 @@ import android.widget.LinearLayout
 import android.widget.ImageView
 import com.squareup.picasso.Picasso;
 import android.support.v7.app.AppCompatActivity
-import com.example.johan.garbarino.response.Image
-import com.example.johan.garbarino.R
+import com.example.johan.products.response.Image
+import com.example.johan.products.R
 import com.squareup.picasso.Callback
 import kotlinx.android.synthetic.main.layout_product_image_list_recycler_view.view.*
 
-import com.example.johan.garbarino.FakeData
+import com.example.johan.products.FakeData
 
 class ProductImageListAdapter(private val data: Array<Image>, private val context:AppCompatActivity) :
     RecyclerView.Adapter<ProductImageListAdapter.MyViewHolder>() {
@@ -48,4 +48,3 @@ class ProductImageListAdapter(private val data: Array<Image>, private val contex
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = data.size
 }
-

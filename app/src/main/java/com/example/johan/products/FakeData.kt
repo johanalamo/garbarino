@@ -1,8 +1,8 @@
-package com.example.johan.garbarino
+package com.example.johan.products
 
-import com.example.johan.garbarino.response.ProductListResponse
-import com.example.johan.garbarino.response.ProductDetailsResponse
-import com.example.johan.garbarino.response.ProductReviewsResponse
+import com.example.johan.products.response.ProductListResponse
+import com.example.johan.products.response.ProductDetailsResponse
+import com.example.johan.products.response.ProductReviewsResponse
 
 import android.support.v7.app.AppCompatActivity
 import android.graphics.drawable.Drawable

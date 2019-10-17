@@ -1,4 +1,4 @@
-package com.example.johan.garbarino.viewmodel
+package com.example.johan.products.viewmodel
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
@@ -7,10 +7,10 @@ import android.arch.lifecycle.ViewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-import com.example.johan.garbarino.*
-import com.example.johan.garbarino.response.ProductReviewsResponse
-import com.example.johan.garbarino.response.Review
-import com.example.johan.garbarino.service.ProductService
+import com.example.johan.products.*
+import com.example.johan.products.response.ProductReviewsResponse
+import com.example.johan.products.response.Review
+import com.example.johan.products.service.ProductService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
