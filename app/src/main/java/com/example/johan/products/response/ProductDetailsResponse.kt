@@ -2,11 +2,11 @@ package com.example.johan.products.response
 
 import com.google.gson.annotations.SerializedName
 
-class ProductDetailsResponse {
-
+data class ProductDetailsResponse (
     @SerializedName("xid")
     var xid: String? = null
-
+)
+{
     @SerializedName("description")
     var description: String? = null
 
@@ -26,14 +26,16 @@ class ProductDetailsResponse {
     var resources: Resources? = null
 }
 
-class Image {
+data class Image(
     @SerializedName("max_width")
     var maxWidth: Int = 0
+)
+{
     @SerializedName("url")
     var url: String? = null
 }
 
-class Resources {
+data class Resources(
     @SerializedName("images")
     var images: Array<Image> = arrayOf()
-}
+)
