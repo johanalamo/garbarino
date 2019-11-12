@@ -7,7 +7,7 @@ class ConfigApp {
 		fun getUrlProductReviews (id:String):String = "http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/" + id + "/reviews/"
 
 		//null to show all comments
-		var commentsToShow: Int? = null
+		var commentsToShow: Int? = 3
 
 	}
 }
