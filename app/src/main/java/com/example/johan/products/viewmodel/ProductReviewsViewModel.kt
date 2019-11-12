@@ -46,18 +46,18 @@ class ProductReviewsViewModel : ViewModel() {
     }
     fun getReviewList(cantidad:Int? = null):ArrayList<Review>{
         var res:ArrayList<Review> = ArrayList()
-        var max:Int = 0;
+        var max:Int;
 
         if (cantidad == null)
-            max = productReviews.value!!.items!![0]!!.reviews!!.size!! - 1
+            max = productReviews.value!!.items!![0].reviews!!.size - 1
         else
-            if (cantidad > productReviews.value!!.items!![0]!!.reviews!!.size!!)
-                max = productReviews.value!!.items!![0]!!.reviews!!.size!! - 1
+            if (cantidad > productReviews.value!!.items!![0].reviews!!.size)
+                max = productReviews.value!!.items!![0].reviews!!.size - 1
             else
                 max = cantidad - 1
         for (i in 0..(max)) {
             try{
-                res.add(productReviews.value!!.items!![0]!!.reviews!![i])
+                res.add(productReviews.value!!.items!![0].reviews!![i])
             }catch(e:Exception){
                 print("pos invalida: " + i.toString() + "   " )
             }

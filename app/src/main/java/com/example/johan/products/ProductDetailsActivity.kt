@@ -41,7 +41,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.layout_details_activity)
 
         try {
-            this.productId = getIntent().getExtras().getString("p_product_id")
+            this.productId = getIntent().getExtras()?.getString("p_product_id") ?: ""
         } catch (e: Exception) {
             this.productId = "0982a08485"
         }
@@ -73,7 +73,7 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
 
     fun showReviewsOnUI(res: ProductReviewsResponse) {
-        var max:Float = res!!.items!![0]!!.reviewStatistics!!.average!!
+        var max:Float = res.items!![0].reviewStatistics!!.average!!
         var showAnimationStarsThread:ShowAnimationStarsThread = ShowAnimationStarsThread(this, max)
         showAnimationStarsThread.start()
     }
