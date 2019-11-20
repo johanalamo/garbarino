@@ -1,15 +1,15 @@
-package com.example.johan.garbarino
+package com.example.johan.products
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.arch.lifecycle.Observer
-import  com.example.johan.garbarino.viewmodel.ProductListViewModel
+import  com.example.johan.products.viewmodel.ProductListViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.widget.Toast
-import com.example.johan.garbarino.adapter.ProductListAdapter
-import com.example.johan.garbarino.response.Product
+import com.example.johan.products.adapter.ProductListAdapter
+import com.example.johan.products.response.Product
 
 class ProductListActivity : AppCompatActivity() {
 
@@ -25,7 +25,7 @@ class ProductListActivity : AppCompatActivity() {
 
       viewModel = ViewModelProviders.of(this).get(ProductListViewModel::class.java)
       viewModel.getProductList().observe(this,
-               Observer { 
+               Observer {
                   productList -> createRecyclerViewProductList(productList!!.items)
                   }
       )

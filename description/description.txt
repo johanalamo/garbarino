@@ -1,0 +1,32 @@
+Requerimiento:
+   App Android nativa con dos pantallas:
+      Listado de productos.
+         Mostrar imagen, precio, precio tachado (es el precio de lista), 
+         descuento y nombre de cada producto. Filtrar el producto si no 
+         viene precio o si no viene el nombre. Si el descuento es 0 o no 
+         viene, ocultar precio tachado y descuento.
+      Detalle de producto.
+         Mostrar los mismos datos que 1) y se le suma la galería de 
+         imágenes, estrellas y los primeros 3 reviews.
+
+Servicios disponibles:
+   http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/
+   http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/{id}
+   http://garbarino-mock-api.s3-website-us-east-1.amazonaws.com/products/{id}/reviews
+
+Prototipos (tienen datos adicionales que no es necesario mostrarlos para este ejercicio):
+   Listado.jpg  ( https://garbarino.invisionapp.com/share/WMPROKR32Y9#/screens/256466400_Resultados_-_Mosaico  )
+   Detalle.jpg  ( https://garbarino.invisionapp.com/share/W9PRX4JH2RP#/screens/253182891_Detalle ) 
+
+Nota: Si te llegás a encontrar con un error de 
+         java.net.UnknownServiceException: CLEARTEXT communication:
+         Agregá esto al manifest:
+         <application 
+            …
+            android:usesCleartextTraffic="true"
+
+Plus:
+      Usar MVP o MVVM.
+      Inyectar dependencias.
+      Animación de transición al hacer click en un item del listado y el detalle.
+      Test unitarios.

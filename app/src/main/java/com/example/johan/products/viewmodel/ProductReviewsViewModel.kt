@@ -1,4 +1,4 @@
-package com.example.johan.garbarino.viewmodel
+package com.example.johan.products.viewmodel
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
@@ -7,10 +7,10 @@ import android.arch.lifecycle.ViewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-import com.example.johan.garbarino.*
-import com.example.johan.garbarino.response.ProductReviewsResponse
-import com.example.johan.garbarino.response.Review
-import com.example.johan.garbarino.service.ProductService
+import com.example.johan.products.*
+import com.example.johan.products.response.ProductReviewsResponse
+import com.example.johan.products.response.Review
+import com.example.johan.products.service.ProductService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,18 +46,18 @@ class ProductReviewsViewModel : ViewModel() {
     }
     fun getReviewList(cantidad:Int? = null):ArrayList<Review>{
         var res:ArrayList<Review> = ArrayList()
-        var max:Int = 0;
+        var max:Int;
 
         if (cantidad == null)
-            max = productReviews.value!!.items!![0]!!.reviews!!.size!! - 1
+            max = productReviews.value!!.items!![0].reviews!!.size - 1
         else
-            if (cantidad > productReviews.value!!.items!![0]!!.reviews!!.size!!)
-                max = productReviews.value!!.items!![0]!!.reviews!!.size!! - 1
+            if (cantidad > productReviews.value!!.items!![0].reviews!!.size)
+                max = productReviews.value!!.items!![0].reviews!!.size - 1
             else
                 max = cantidad - 1
         for (i in 0..(max)) {
             try{
-                res.add(productReviews.value!!.items!![0]!!.reviews!![i])
+                res.add(productReviews.value!!.items!![0].reviews!![i])
             }catch(e:Exception){
                 print("pos invalida: " + i.toString() + "   " )
             }

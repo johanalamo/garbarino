@@ -1,4 +1,4 @@
-package com.example.johan.garbarino
+package com.example.johan.products
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -10,14 +10,14 @@ import android.support.v7.widget.RecyclerView
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.layout_product_details.*
 import android.os.SystemClock
-import com.example.johan.garbarino.adapter.ProductImageListAdapter
-import com.example.johan.garbarino.adapter.ProductReviewListAdapter
-import com.example.johan.garbarino.response.Image
-import com.example.johan.garbarino.response.ProductDetailsResponse
-import com.example.johan.garbarino.response.ProductReviewsResponse
-import com.example.johan.garbarino.response.Review
-import com.example.johan.garbarino.viewmodel.ProductDetailsViewModel
-import com.example.johan.garbarino.viewmodel.ProductReviewsViewModel
+import com.example.johan.products.adapter.ProductImageListAdapter
+import com.example.johan.products.adapter.ProductReviewListAdapter
+import com.example.johan.products.response.Image
+import com.example.johan.products.response.ProductDetailsResponse
+import com.example.johan.products.response.ProductReviewsResponse
+import com.example.johan.products.response.Review
+import com.example.johan.products.viewmodel.ProductDetailsViewModel
+import com.example.johan.products.viewmodel.ProductReviewsViewModel
 
 class ProductDetailsActivity : AppCompatActivity() {
     private var productId: String = ""
@@ -41,7 +41,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.layout_details_activity)
 
         try {
-            this.productId = getIntent().getExtras().getString("p_product_id")
+            this.productId = getIntent().getExtras()?.getString("p_product_id") ?: ""
         } catch (e: Exception) {
             this.productId = "0982a08485"
         }
@@ -73,7 +73,7 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
 
     fun showReviewsOnUI(res: ProductReviewsResponse) {
-        var max:Float = res!!.items!![0]!!.reviewStatistics!!.average!!
+        var max:Float = res.items!![0].reviewStatistics!!.average!!
         var showAnimationStarsThread:ShowAnimationStarsThread = ShowAnimationStarsThread(this, max)
         showAnimationStarsThread.start()
     }

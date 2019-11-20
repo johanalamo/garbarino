@@ -1,21 +1,19 @@
-package com.example.johan.garbarino.response
+package com.example.johan.products.response
 
 import com.google.gson.annotations.SerializedName
 
 
-class ProductListResponse {
-
+data class ProductListResponse (
     @SerializedName("items")
     var items: Array<Product> = arrayOf()
+)
 
-}
 
-
-class Product {
-
+data class Product (
     @SerializedName("id")
     var id: String? = ""
-
+)
+{
     @SerializedName("description")
     val description: String? = ""
 

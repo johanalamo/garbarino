@@ -1,4 +1,4 @@
-package com.example.johan.garbarino
+package com.example.johan.products
 
 import org.junit.Test
 
