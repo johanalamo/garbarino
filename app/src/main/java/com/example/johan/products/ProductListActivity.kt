@@ -2,7 +2,9 @@ package com.example.johan.products
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
+//import android.support.v7.widget.GridLayoutManager
+//import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.arch.lifecycle.Observer
 import  com.example.johan.products.viewmodel.ProductListViewModel
@@ -33,7 +35,9 @@ class ProductListActivity : AppCompatActivity() {
    }
 
    fun createRecyclerViewProductList(data:Array<Product>){
-      viewManager = GridLayoutManager(this, 2) //LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+      viewManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+      //viewManager = GridLayoutManager(this, 2)
+      //viewManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
       viewAdapter = ProductListAdapter(data, this)
       recyclerView = findViewById <RecyclerView>(R.id.rviewProducts).apply {
          setHasFixedSize(false);
