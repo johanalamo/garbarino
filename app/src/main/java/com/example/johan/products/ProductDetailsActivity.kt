@@ -10,8 +10,8 @@ import android.support.v7.widget.RecyclerView
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.layout_product_details.*
 import android.os.SystemClock
-import com.example.johan.products.adapter.ProductImageListAdapter
-import com.example.johan.products.adapter.ProductReviewListAdapter
+import com.example.johan.products.adapter.ProductImageListRecyclerViewAdapter
+import com.example.johan.products.adapter.ProductReviewListRecyclerViewAdapter
 import com.example.johan.products.response.Image
 import com.example.johan.products.response.ProductDetailsResponse
 import com.example.johan.products.response.ProductReviewsResponse
@@ -94,7 +94,7 @@ class ProductDetailsActivity : AppCompatActivity() {
 
     fun createRecyclerViewImageList(data:Array<Image>){
         viewManagerImage = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        viewAdapterImage = ProductImageListAdapter(data, this)
+        viewAdapterImage = ProductImageListRecyclerViewAdapter(data, this)
         recyclerViewImage = findViewById <RecyclerView>(R.id.rviewProductListImages).apply {
             setHasFixedSize(false)
             layoutManager = viewManagerImage
@@ -103,7 +103,7 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
     fun createRecyclerViewReviewList(data:ArrayList<Review>){
         viewManagerReview = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        viewAdapterReview = ProductReviewListAdapter(data, this)
+        viewAdapterReview = ProductReviewListRecyclerViewAdapter(data, this)
         recyclerViewReview = findViewById <RecyclerView>(R.id.rviewProductListReviews).apply {
             setHasFixedSize(false);
             layoutManager = viewManagerReview

@@ -10,14 +10,12 @@ import android.arch.lifecycle.Observer
 import  com.example.johan.products.viewmodel.ProductListViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.widget.Toast
-import com.example.johan.products.adapter.ProductListAdapter
+import com.example.johan.products.adapter.ProductListRecyclerViewAdapter
 import com.example.johan.products.response.Product
 
 class ProductListActivity : AppCompatActivity() {
 
    private lateinit var recyclerView:RecyclerView
-   private lateinit var viewAdapter: RecyclerView.Adapter<*>
-   private lateinit var viewManager: RecyclerView.LayoutManager
 
    private lateinit var viewModel:ProductListViewModel
 
@@ -35,14 +33,12 @@ class ProductListActivity : AppCompatActivity() {
    }
 
    fun createRecyclerViewProductList(data:Array<Product>){
-      viewManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-      //viewManager = GridLayoutManager(this, 2)
-      //viewManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-      viewAdapter = ProductListAdapter(data, this)
-      recyclerView = findViewById <RecyclerView>(R.id.rviewProducts).apply {
-         setHasFixedSize(false);
-         layoutManager = viewManager
-         adapter = viewAdapter
-      }
+      //recyclerView.adapter = GridLayoutManager(this, 2)
+      //recyclerView.adapter = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+      recyclerView = findViewById <RecyclerView>(R.id.rviewProducts)
+      recyclerView.setHasFixedSize(false)
+      recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+      recyclerView.adapter = ProductListRecyclerViewAdapter(data, this)
    }
 }

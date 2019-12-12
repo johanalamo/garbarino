@@ -16,37 +16,22 @@ import com.example.johan.products.R
 import com.squareup.picasso.Callback
 
 import com.example.johan.products.FakeData
+import com.example.johan.products.viewholder.ProductListRecyclerViewViewHolder
 
-class ProductListAdapter(private val data: Array<Product>, private val context:AppCompatActivity) :
-    RecyclerView.Adapter<ProductListAdapter.MyViewHolder>() {
+class ProductListRecyclerViewAdapter(private val data: Array<Product>, private val context:AppCompatActivity) :
+    RecyclerView.Adapter<ProductListRecyclerViewViewHolder>() {
 
-    class MyViewHolder(val linearLyt: LinearLayout) : RecyclerView.ViewHolder(linearLyt) {
-        private val myImageView: ImageView = itemView.findViewById<ImageView>(R.id.imgProduct)
-
-        fun updateImageWithUrl(url: String, c:AppCompatActivity) {
-         Picasso.with(itemView.context).load(url).into(myImageView,
-             object
-                 : Callback {
-                 override fun onSuccess() {                 }
-                 override fun onError() {
-                     linearLyt.imgProduct.setImageDrawable(FakeData.getFakeDrawableFor(c, url))
-                     println("********************error en la carga: " + url)
-                 }
-             }
-            )
-            }
-    }
     // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListRecyclerViewViewHolder {
         // create a new view
         val linearLyt = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_product_list_recycler_view, parent, false) as LinearLayout
         // set the view's size, margins, paddings and layout parameters
-        return MyViewHolder(linearLyt)
+        return ProductListRecyclerViewViewHolder(linearLyt)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProductListRecyclerViewViewHolder, position: Int) {
         holder.updateImageWithUrl("http:" + data[position].image_url, context)
 //        holder.linearLyt.imgProduct.setImageDrawable(context.getDrawable(R.drawable.img32))
         holder.linearLyt.txtDescription.text  = data[position].description

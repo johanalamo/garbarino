@@ -10,26 +10,27 @@ import com.example.johan.products.R
 import com.example.johan.products.response.Review
 import kotlinx.android.synthetic.main.layout_product_review_list_recycler_view.view.*
 
+import com.example.johan.products.viewholder.ProductReviewListRecyclerViewViewHolder
 
-class ProductReviewListAdapter(private val data: ArrayList<Review>, private val context:AppCompatActivity) :
-    RecyclerView.Adapter<ProductReviewListAdapter.MyViewHolder>() {
+
+class ProductReviewListRecyclerViewAdapter(private val data: ArrayList<Review>, private val context:AppCompatActivity) :
+    RecyclerView.Adapter<ProductReviewListRecyclerViewViewHolder>() {
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder.
     // Each data item is just a string in this case that is shown in a TextView.
-    class MyViewHolder(val linearLyt: LinearLayout) : RecyclerView.ViewHolder(linearLyt){    }
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): MyViewHolder {
+                                    viewType: Int): ProductReviewListRecyclerViewViewHolder {
         val linearLyt = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_product_review_list_recycler_view, parent, false) as LinearLayout
-        return MyViewHolder(linearLyt)
+        return ProductReviewListRecyclerViewViewHolder(linearLyt)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProductReviewListRecyclerViewViewHolder, position: Int) {
 
         holder.linearLyt.txtNumReview.text  = (position + 1).toString()
         holder.linearLyt.txtReviewStars.text  = data[position].rating.toString()
