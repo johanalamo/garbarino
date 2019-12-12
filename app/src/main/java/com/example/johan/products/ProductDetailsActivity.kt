@@ -23,12 +23,8 @@ class ProductDetailsActivity : AppCompatActivity() {
     private var productId: String = ""
 
     private lateinit var recyclerViewImage:RecyclerView
-    private lateinit var viewAdapterImage: RecyclerView.Adapter<*>
-    private lateinit var viewManagerImage: RecyclerView.LayoutManager
 
     private lateinit var recyclerViewReview:RecyclerView
-    private lateinit var viewAdapterReview: RecyclerView.Adapter<*>
-    private lateinit var viewManagerReview: RecyclerView.LayoutManager
 
     private lateinit var productDetailsViewModel: ProductDetailsViewModel
     private lateinit var productReviewsViewModel: ProductReviewsViewModel
@@ -93,22 +89,18 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
 
     fun createRecyclerViewImageList(data:Array<Image>){
-        viewManagerImage = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        viewAdapterImage = ProductImageListRecyclerViewAdapter(data, this)
-        recyclerViewImage = findViewById <RecyclerView>(R.id.rviewProductListImages).apply {
-            setHasFixedSize(false)
-            layoutManager = viewManagerImage
-            adapter = viewAdapterImage
-        }
+        recyclerViewImage = findViewById <RecyclerView>(R.id.rviewProductListImages)
+
+        recyclerViewImage.setHasFixedSize(false)
+        recyclerViewImage.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewImage.adapter = ProductImageListRecyclerViewAdapter(data, this)
     }
     fun createRecyclerViewReviewList(data:ArrayList<Review>){
-        viewManagerReview = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        viewAdapterReview = ProductReviewListRecyclerViewAdapter(data, this)
-        recyclerViewReview = findViewById <RecyclerView>(R.id.rviewProductListReviews).apply {
-            setHasFixedSize(false);
-            layoutManager = viewManagerReview
-            adapter = viewAdapterReview
-        }
+        recyclerViewReview = findViewById <RecyclerView>(R.id.rviewProductListReviews)
+
+        recyclerViewReview.setHasFixedSize(false);
+        recyclerViewReview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        recyclerViewReview.adapter = ProductReviewListRecyclerViewAdapter(data, this)
     }
 }
 
