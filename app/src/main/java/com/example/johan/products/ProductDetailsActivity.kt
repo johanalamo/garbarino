@@ -18,18 +18,16 @@ import com.example.johan.products.response.ProductReviewsResponse
 import com.example.johan.products.response.Review
 import com.example.johan.products.viewmodel.ProductDetailsViewModel
 import com.example.johan.products.viewmodel.ProductReviewsViewModel
+import android.util.Log
 
 class ProductDetailsActivity : AppCompatActivity() {
+	private val TAG = ProductDetailsActivity::class.java.simpleName
     private var productId: String = ""
 
     private lateinit var recyclerViewImage:RecyclerView
-
     private lateinit var recyclerViewReview:RecyclerView
-
     private lateinit var productDetailsViewModel: ProductDetailsViewModel
     private lateinit var productReviewsViewModel: ProductReviewsViewModel
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(R.anim.slide_up, R.anim.slide_off)
@@ -41,7 +39,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         } catch (e: Exception) {
             this.productId = "0982a08485"
         }
-        println("================ProductDetailsActivity.productId = " + this.productId)
+        Log.d(TAG, "================ProductDetailsActivity.productId = " + this.productId)
         loadProductDetailsViewModel()
         loadProductReviewsViewModel()
 
@@ -56,11 +54,11 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
 
     private fun loadProductReviewsViewModel() {
-        println("===============================entro en productdetailsactivity.loadproduVM")
+        Log.d(TAG,"===============================entro en productdetailsactivity.loadproduVM")
         productReviewsViewModel = ViewModelProviders.of(this).get(ProductReviewsViewModel::class.java)
         productReviewsViewModel.getProductDetails().observe(this,
             Observer { productReviews ->
-                println("===============================entro en productdetailsactivity.loadproduVM.observer")
+                Log.d(TAG,"===============================entro en productdetailsactivity.loadproduVM.observer")
                 showReviewsOnUI(productReviews!!)
                 createRecyclerViewReviewList(productReviewsViewModel.getReviewList(ConfigApp.commentsToShow))
             }
@@ -76,13 +74,13 @@ class ProductDetailsActivity : AppCompatActivity() {
 
     fun showDetailsOnUi(res: ProductDetailsResponse) {
         txtDescription.text = res.description!!
-        txtPrice.text = "$ " + res.price.toString()
+        txtPrice.text = getString(R.string.price, res.price)
 
         if (res.discount == 0)
             lytDiscount.visibility = LinearLayout.GONE
         else {
-            txtListPrice.text = "$ " + res.listPrice.toString()
-            txtDiscount.text = res.discount.toString() + "% OFF"
+            txtListPrice.text = getString(R.string.price, res.listPrice )
+            txtDiscount.text = getString(R.string.discount, res.discount)
             txtListPrice.setPaintFlags(txtListPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
         }
         createRecyclerViewImageList(res.resources!!.images)

@@ -28,10 +28,6 @@ Puntos a mejorar:
 
     * Mejorar en layout_details_activity.xml: Se usó RecyclerView dentro de ScrollView que no es considerado una buena práctica. Una alternativa es usar un solo RecyclerView para toda la pantalla y manejar dos tipos diferentes, por ejemplo, PRODUCT_TYPE donde se muestran los detalles de producto y REVIEW_TYPE donde se muestra un review.
 
-    * AdapterProductList no debe lanzar activities. El adapter debería tener un listener como variable. El activity debería implementar dicho Listener. Cuando se hace click en lugar de lanzar un activity, llamar a un método de dicho listener y que en la activity se lance la activity de detalle.
-
-    * Usar strings.xml con parámetros en lugar de hardcodear strings. Ej: res.discount.toString() + "% OFF"
-
     * Revisar visibilidad (privado/público/etc.) de atributos y métodos.
 
     * Revisar algunas variables en lugar de var podrían ser val.
