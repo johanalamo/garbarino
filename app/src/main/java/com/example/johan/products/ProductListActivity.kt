@@ -2,18 +2,20 @@ package com.example.johan.products
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.content.Intent
 //import android.support.v7.widget.GridLayoutManager
 //import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.arch.lifecycle.Observer
-import  com.example.johan.products.viewmodel.ProductListViewModel
+import com.example.johan.products.viewmodel.ProductListViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.widget.Toast
 import com.example.johan.products.adapter.ProductListRecyclerViewAdapter
 import com.example.johan.products.response.Product
+import com.example.johan.products.adapter.ProductListClickListener
 
-class ProductListActivity : AppCompatActivity() {
+class ProductListActivity : AppCompatActivity(), ProductListClickListener {
 
    private lateinit var recyclerView:RecyclerView
 
@@ -40,5 +42,10 @@ class ProductListActivity : AppCompatActivity() {
       recyclerView.setHasFixedSize(false)
       recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
       recyclerView.adapter = ProductListRecyclerViewAdapter(data, this)
+   }
+   override fun listItemClicked(element:Product){
+	   val intent: Intent = Intent(this, ProductDetailsActivity::class.java)
+	   intent.putExtra("p_product_id", element.id)
+	   this.startActivity(intent)
    }
 }

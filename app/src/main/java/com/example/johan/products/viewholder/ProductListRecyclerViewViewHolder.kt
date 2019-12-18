@@ -21,13 +21,13 @@ import com.example.johan.products.FakeData
 class ProductListRecyclerViewViewHolder(val linearLyt: LinearLayout) : RecyclerView.ViewHolder(linearLyt) {
     private val myImageView: ImageView = itemView.findViewById<ImageView>(R.id.imgProduct)
 
-    fun updateImageWithUrl(url: String, c:AppCompatActivity) {
+    fun updateImageWithUrl(url: String) {
      Picasso.with(itemView.context).load(url).into(myImageView,
          object
              : Callback {
              override fun onSuccess() {                 }
              override fun onError() {
-                 linearLyt.imgProduct.setImageDrawable(FakeData.getFakeDrawableFor(c, url))
+//                 linearLyt.imgProduct.setImageDrawable(FakeData.getFakeDrawableFor(c, url))
                  println("********************error en la carga: " + url)
              }
          }

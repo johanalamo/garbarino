@@ -18,7 +18,12 @@ import com.squareup.picasso.Callback
 import com.example.johan.products.FakeData
 import com.example.johan.products.viewholder.ProductListRecyclerViewViewHolder
 
-class ProductListRecyclerViewAdapter(private val data: Array<Product>, private val context:AppCompatActivity) :
+interface ProductListClickListener {
+	fun listItemClicked(element:Product)
+}
+
+class ProductListRecyclerViewAdapter(private val data: Array<Product>,
+	private val context:ProductListClickListener) :
     RecyclerView.Adapter<ProductListRecyclerViewViewHolder>() {
 
     // Create new views (invoked by the layout manager)
@@ -32,7 +37,7 @@ class ProductListRecyclerViewAdapter(private val data: Array<Product>, private v
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: ProductListRecyclerViewViewHolder, position: Int) {
-        holder.updateImageWithUrl("http:" + data[position].image_url, context)
+        holder.updateImageWithUrl("http:" + data[position].image_url)
 //        holder.linearLyt.imgProduct.setImageDrawable(context.getDrawable(R.drawable.img32))
         holder.linearLyt.txtDescription.text  = data[position].description
         holder.linearLyt.txtPrice.text        = "$ " + data[position].price.toString()
@@ -44,11 +49,9 @@ class ProductListRecyclerViewAdapter(private val data: Array<Product>, private v
             holder.linearLyt.txtListPrice.setPaintFlags(holder.linearLyt.txtListPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
         }
         //programacion evento click
-        holder.linearLyt.setOnClickListener({
-            val intent: Intent = Intent(this.context, ProductDetailsActivity::class.java)
-            intent.putExtra("p_product_id", data[position].id)
-            this.context.startActivity(intent)
-        })
+        holder.linearLyt.setOnClickListener {
+			context.listItemClicked(data[position])
+        }
     }
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = data.size
