@@ -2,16 +2,15 @@ package com.example.johan.products.response
 
 import com.google.gson.annotations.SerializedName
 
-data class ProductReviewsResponse (
+data class ProductReviewsResponse(
     @SerializedName("items")
-    var items:Array<Item>? = arrayOf()
+    var items: Array<Item>? = arrayOf()
 )
 
 data class Item(
-      @SerializedName("id")
-      var id:String? = ""
-    )
-{
+    @SerializedName("id")
+    var id: String? = ""
+) {
     @SerializedName("review_statistics")
     var reviewStatistics: ReviewStatistics? = ReviewStatistics()
 
@@ -21,29 +20,28 @@ data class Item(
 
 data class ReviewStatistics(
     @SerializedName("average_overall_rating")
-    var average:Float? = 0.toFloat()
+    var average: Float? = 0.toFloat()
 )
 
 data class Review(
-        @SerializedName("id")
-        var id:String? = ""
-    )
-{
+    @SerializedName("id")
+    var id: String? = ""
+) {
     @SerializedName("usernickname")
-    var userNickname:String? = ""
+    var userNickname: String? = ""
 
     @SerializedName("title")
-    var title:String? = ""
+    var title: String? = ""
 
     @SerializedName("review_text")
-    var reviewText:String? = ""
+    var reviewText: String? = ""
 
     @SerializedName("rating")
-    var rating:Float? = 0.toFloat()
+    var rating: Float? = 0.toFloat()
 
     @SerializedName("submission_time")
-    var submissionTime:String? = ""
+    var submissionTime: String? = ""
 
     @SerializedName("product_id")
-    var productId:String? = ""
+    var productId: String? = ""
 }

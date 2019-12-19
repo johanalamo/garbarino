@@ -2,22 +2,21 @@ package com.example.johan.products.response
 
 import com.google.gson.annotations.SerializedName
 
-data class ProductDetailsResponse (
+data class ProductDetailsResponse(
     @SerializedName("xid")
     var xid: String? = null
-)
-{
+) {
     @SerializedName("description")
     var description: String? = null
 
     @SerializedName("list_price")
-    var listPrice:Int? = 0
+    var listPrice: Int? = 0
 
     @SerializedName("price")
-    var price:Int? = 0
+    var price: Int? = 0
 
     @SerializedName("discount")
-    var discount:Int? = 0
+    var discount: Int? = 0
 
     @SerializedName("main_image")
     var mainImage: Image? = null
@@ -29,8 +28,7 @@ data class ProductDetailsResponse (
 data class Image(
     @SerializedName("max_width")
     var maxWidth: Int = 0
-)
-{
+) {
     @SerializedName("url")
     var url: String? = null
 }

@@ -8,13 +8,13 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ProductService {
-  @GET (".")
-  fun getProductListData(): Call<ProductListResponse>
+    @GET(".")
+    fun getProductListData(): Call<ProductListResponse>
 
-  @GET ("/{id}/")
-  fun getProductDetailsData(@Query ("id") productId: String): Call<ProductDetailsResponse>
+    @GET("/{id}/")
+    fun getProductDetailsData(@Query("id") productId: String): Call<ProductDetailsResponse>
 
-  @GET ("/{id}/reviews/")
-  fun getProductReviewsData(@Query ("id") productId: String): Call<ProductReviewsResponse>
+    @GET("/{id}/reviews/")
+    fun getProductReviewsData(@Query("id") productId: String): Call<ProductReviewsResponse>
 
 }

@@ -2,4 +2,8 @@
     <string name="app_name">Venta de productos</string>
 
     <string name="strComments">Comentarios</string>
+
+	<string name="commentAuthor">Por %1$s</string>
+	<string name="price">$ %1$s</string>
+	<string name="discount">%1$s%% OFF</string>
 </resources>
