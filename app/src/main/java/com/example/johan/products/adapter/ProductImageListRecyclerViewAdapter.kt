@@ -1,6 +1,5 @@
 package com.example.johan.products.adapter
 
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,8 +13,7 @@ import com.squareup.picasso.Picasso
 
 
 class ProductImageListRecyclerViewAdapter(
-    private val data: Array<Image>,
-    private val context: AppCompatActivity
+    private val data: Array<Image>
 ) :
     RecyclerView.Adapter<ProductImageListRecyclerViewAdapter.ViewHolder>() {
 

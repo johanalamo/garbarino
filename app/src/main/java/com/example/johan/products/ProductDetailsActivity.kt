@@ -98,7 +98,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         recyclerViewImage.setHasFixedSize(false)
         recyclerViewImage.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        recyclerViewImage.adapter = ProductImageListRecyclerViewAdapter(data, this)
+        recyclerViewImage.adapter = ProductImageListRecyclerViewAdapter(data)
     }
 
     fun createRecyclerViewReviewList(data: ArrayList<Review>) {
