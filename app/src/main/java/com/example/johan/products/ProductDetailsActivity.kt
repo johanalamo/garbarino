@@ -4,12 +4,12 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.graphics.Paint
 import android.os.Bundle
+import android.os.SystemClock
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.widget.LinearLayout
-import kotlinx.android.synthetic.main.layout_product_details.*
-import android.os.SystemClock
 import com.example.johan.products.adapter.ProductImageListRecyclerViewAdapter
 import com.example.johan.products.adapter.ProductReviewListRecyclerViewAdapter
 import com.example.johan.products.response.Image
@@ -18,14 +18,14 @@ import com.example.johan.products.response.ProductReviewsResponse
 import com.example.johan.products.response.Review
 import com.example.johan.products.viewmodel.ProductDetailsViewModel
 import com.example.johan.products.viewmodel.ProductReviewsViewModel
-import android.util.Log
+import kotlinx.android.synthetic.main.layout_product_details.*
 
 class ProductDetailsActivity : AppCompatActivity() {
-	private val TAG = ProductDetailsActivity::class.java.simpleName
+    private val TAG = ProductDetailsActivity::class.java.simpleName
     private var productId: String = ""
 
-    private lateinit var recyclerViewImage:RecyclerView
-    private lateinit var recyclerViewReview:RecyclerView
+    private lateinit var recyclerViewImage: RecyclerView
+    private lateinit var recyclerViewReview: RecyclerView
     private lateinit var productDetailsViewModel: ProductDetailsViewModel
     private lateinit var productReviewsViewModel: ProductReviewsViewModel
 
@@ -44,21 +44,27 @@ class ProductDetailsActivity : AppCompatActivity() {
         loadProductReviewsViewModel()
 
     }
+
     private fun loadProductDetailsViewModel() {
-        productDetailsViewModel = ViewModelProviders.of(this).get(ProductDetailsViewModel::class.java)
+        productDetailsViewModel =
+            ViewModelProviders.of(this).get(ProductDetailsViewModel::class.java)
         productDetailsViewModel.getProductDetails().observe(
             this,
-            Observer { productDetails -> showDetailsOnUi(productDetails!!)  }
+            Observer { productDetails -> showDetailsOnUi(productDetails!!) }
         )
         productDetailsViewModel.loadProductDetailsData(this.productId)
     }
 
     private fun loadProductReviewsViewModel() {
-        Log.d(TAG,"===============================entro en productdetailsactivity.loadproduVM")
-        productReviewsViewModel = ViewModelProviders.of(this).get(ProductReviewsViewModel::class.java)
+        Log.d(TAG, "===============================entro en productdetailsactivity.loadproduVM")
+        productReviewsViewModel =
+            ViewModelProviders.of(this).get(ProductReviewsViewModel::class.java)
         productReviewsViewModel.getProductDetails().observe(this,
             Observer { productReviews ->
-                Log.d(TAG,"===============================entro en productdetailsactivity.loadproduVM.observer")
+                Log.d(
+                    TAG,
+                    "===============================entro en productdetailsactivity.loadproduVM.observer"
+                )
                 showReviewsOnUI(productReviews!!)
                 createRecyclerViewReviewList(productReviewsViewModel.getReviewList(ConfigApp.commentsToShow))
             }
@@ -67,8 +73,8 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
 
     fun showReviewsOnUI(res: ProductReviewsResponse) {
-        var max:Float = res.items!![0].reviewStatistics!!.average!!
-        var showAnimationStarsThread:ShowAnimationStarsThread = ShowAnimationStarsThread(this, max)
+        var max: Float = res.items!![0].reviewStatistics!!.average!!
+        var showAnimationStarsThread: ShowAnimationStarsThread = ShowAnimationStarsThread(this, max)
         showAnimationStarsThread.start()
     }
 
@@ -79,34 +85,37 @@ class ProductDetailsActivity : AppCompatActivity() {
         if (res.discount == 0)
             lytDiscount.visibility = LinearLayout.GONE
         else {
-            txtListPrice.text = getString(R.string.price, res.listPrice )
+            txtListPrice.text = getString(R.string.price, res.listPrice)
             txtDiscount.text = getString(R.string.discount, res.discount)
             txtListPrice.setPaintFlags(txtListPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
         }
         createRecyclerViewImageList(res.resources!!.images)
     }
 
-    fun createRecyclerViewImageList(data:Array<Image>){
-        recyclerViewImage = findViewById <RecyclerView>(R.id.rviewProductListImages)
+    fun createRecyclerViewImageList(data: Array<Image>) {
+        recyclerViewImage = findViewById<RecyclerView>(R.id.rviewProductListImages)
 
         recyclerViewImage.setHasFixedSize(false)
-        recyclerViewImage.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewImage.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewImage.adapter = ProductImageListRecyclerViewAdapter(data, this)
     }
-    fun createRecyclerViewReviewList(data:ArrayList<Review>){
-        recyclerViewReview = findViewById <RecyclerView>(R.id.rviewProductListReviews)
+
+    fun createRecyclerViewReviewList(data: ArrayList<Review>) {
+        recyclerViewReview = findViewById<RecyclerView>(R.id.rviewProductListReviews)
 
         recyclerViewReview.setHasFixedSize(false);
-        recyclerViewReview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        recyclerViewReview.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerViewReview.adapter = ProductReviewListRecyclerViewAdapter(data, this)
     }
 }
 
-class ShowAnimationStarsThread(p_caller:AppCompatActivity, maxPoints:Float): Thread(){
-    var max:Float = maxPoints
-    var caller:AppCompatActivity = p_caller
-    val animationDuration:Float = 1000.toFloat()   //miliseguntos totales de la animación
-    val framesPerSecond:Float = 60.toFloat()
+class ShowAnimationStarsThread(p_caller: AppCompatActivity, maxPoints: Float) : Thread() {
+    var max: Float = maxPoints
+    var caller: AppCompatActivity = p_caller
+    val animationDuration: Float = 1000.toFloat()   //miliseguntos totales de la animación
+    val framesPerSecond: Float = 60.toFloat()
     override fun run() {
         super.run()
         var totalFrames = animationDuration / 1000.toFloat() * framesPerSecond
