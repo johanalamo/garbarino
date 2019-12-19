@@ -11,9 +11,8 @@ import android.arch.lifecycle.ViewModelProviders
 import android.widget.Toast
 import com.example.johan.products.adapter.ProductListRecyclerViewAdapter
 import com.example.johan.products.response.Product
-import com.example.johan.products.listener.ProductListRecyclerViewClickListener
 
-class ProductListActivity : AppCompatActivity(), ProductListRecyclerViewClickListener {
+class ProductListActivity : AppCompatActivity(), ProductListRecyclerViewAdapter.ClickListener {
 
    private lateinit var recyclerView:RecyclerView
 
