@@ -17,6 +17,8 @@ import com.example.johan.products.response.Product
 import com.example.johan.products.viewmodel.ProductListViewModel
 
 
+private const val ARG_COLS = "cols"
+
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
@@ -32,6 +34,15 @@ class ProductListFragment : Fragment(), ProductListRecyclerViewAdapter.ClickList
     private lateinit var viewModel: ProductListViewModel
 
     private lateinit var recyclerView: RecyclerView
+
+    private var cols: Int = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            cols = it.getString(ARG_COLS, "1").toInt()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -78,7 +89,7 @@ class ProductListFragment : Fragment(), ProductListRecyclerViewAdapter.ClickList
             recyclerView = it.findViewById<RecyclerView>(R.id.rviewProducts)
             recyclerView.setHasFixedSize(false)
             recyclerView.layoutManager =
-                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                StaggeredGridLayoutManager(cols, StaggeredGridLayoutManager.VERTICAL)
             recyclerView.adapter = ProductListRecyclerViewAdapter(data, context as AppCompatActivity, this)
         }
     }
@@ -109,6 +120,10 @@ class ProductListFragment : Fragment(), ProductListRecyclerViewAdapter.ClickList
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance() = ProductListFragment()
+        fun newInstance(cols: Int = 2) = ProductListFragment().apply {
+            arguments = Bundle().apply {
+                putString(ARG_COLS, cols.toString())
+            }
+        }
     }
 }

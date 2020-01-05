@@ -5,8 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:showIn="@layout/layout_phonebook_list_activity"
-    tools:context=".PhoneBookListActivity">
+    tools:showIn="@layout/layout_main_activity"
+    tools:context=".ProductListActivity">
 <!--    app:layout_behavior="@string/appbar_scrolling_view_behavior"   -->
 
     <FrameLayout

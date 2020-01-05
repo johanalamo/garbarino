@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ProductDetailsFragment">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".ProductListActivity">
+
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rviewProductListImages"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                <include
+                        android:id="@+id/lytProductDetails"
+                        layout="@layout/layout_product_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="10dp" />
+
+                <TextView
+                        android:id="@+id/txtComments"
+                        style="@style/stlProductDetailsDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/strComments" />
+
+                <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rviewProductListReviews"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</FrameLayout>
