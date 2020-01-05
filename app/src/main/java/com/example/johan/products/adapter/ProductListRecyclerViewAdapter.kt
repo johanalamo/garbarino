@@ -17,21 +17,21 @@ import kotlinx.android.synthetic.main.layout_product_list_recycler_view.view.*
 class ProductListRecyclerViewAdapter(
     private val data: Array<Product>,
     private val context: AppCompatActivity,
-    private val clickListener: ProductListRecyclerViewAdapter.ClickListener
+    private val clickListener: ClickListener
 ) :
     RecyclerView.Adapter<ProductListRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ProductListRecyclerViewAdapter.ViewHolder {
+    ): ViewHolder {
         val linearLyt = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_product_list_recycler_view, parent, false) as LinearLayout
-        return ProductListRecyclerViewAdapter.ViewHolder(linearLyt)
+        return ViewHolder(linearLyt)
     }
 
     override fun onBindViewHolder(
-        holder: ProductListRecyclerViewAdapter.ViewHolder,
+        holder: ViewHolder,
         position: Int
     ) {
         holder.updateImageWithUrl("http:" + data[position].image_url)
@@ -48,7 +48,7 @@ class ProductListRecyclerViewAdapter(
         }
 
         holder.linearLyt.setOnClickListener {
-            clickListener.listItemClicked(data[position])
+            clickListener.listItemClicked(data[position]?.id!!)
         }
     }
 
@@ -75,6 +75,6 @@ class ProductListRecyclerViewAdapter(
 
 
     interface ClickListener {
-        fun listItemClicked(element: Product)
+        fun listItemClicked(productId: String)
     }
 }
