@@ -85,8 +85,8 @@ class ProductDetailsActivity : AppCompatActivity() {
         if (res.discount == 0)
             lytDiscount.visibility = LinearLayout.GONE
         else {
-            txtListPrice.text = getString(R.string.price, res.listPrice)
-            txtDiscount.text = getString(R.string.discount, res.discount)
+            txtListPrice.text = getString(R.string.price, res.listPrice.toString())
+            txtDiscount.text = getString(R.string.discount, res.discount.toString())
             txtListPrice.setPaintFlags(txtListPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
         }
         createRecyclerViewImageList(res.resources!!.images)
