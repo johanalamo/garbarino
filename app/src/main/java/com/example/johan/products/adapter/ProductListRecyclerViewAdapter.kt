@@ -49,7 +49,7 @@ class ProductListRecyclerViewAdapter(
         }
 
         holder.view.setOnClickListener {
-            clickListener.listItemClicked(data[position]?.id!!)
+            clickListener.listItemClicked(data[position].id!!)
         }
     }
 
