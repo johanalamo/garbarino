@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import com.example.johan.products.R
 import com.example.johan.products.response.Image
 import com.squareup.picasso.Callback
@@ -21,7 +20,7 @@ class ProductImageListRecyclerViewAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(
-                R.layout.layout_product_image_list_recycler_view,
+                R.layout.layout_product_image_list_view_holder,
                 parent,
                 false
             ) as View

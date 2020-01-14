@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.johan.products.R
 import com.example.johan.products.response.Review
-import kotlinx.android.synthetic.main.layout_product_review_list_recycler_view.view.*
+import kotlinx.android.synthetic.main.layout_product_review_list_view_holder.view.*
 
 
 class ProductReviewListRecyclerViewAdapter(
@@ -19,7 +19,7 @@ class ProductReviewListRecyclerViewAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(
-                R.layout.layout_product_review_list_recycler_view,
+                R.layout.layout_product_review_list_view_holder,
                 parent,
                 false
             ) as View

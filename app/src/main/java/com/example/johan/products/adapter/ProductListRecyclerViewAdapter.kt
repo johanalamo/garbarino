@@ -13,7 +13,7 @@ import com.example.johan.products.R
 import com.example.johan.products.response.Product
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.layout_product_list_recycler_view.view.*
+import kotlinx.android.synthetic.main.layout_product_list_view_holder.view.*
 
 class ProductListRecyclerViewAdapter(
     private val data: Array<Product>,
@@ -27,7 +27,7 @@ class ProductListRecyclerViewAdapter(
         viewType: Int
     ): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_product_list_recycler_view, parent, false) as View
+            .inflate(R.layout.layout_product_list_view_holder, parent, false) as View
         return ViewHolder(view)
     }
 
