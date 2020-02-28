@@ -37,14 +37,14 @@ class ProductListRecyclerViewAdapter(
     ) {
         holder.updateImageWithUrl("http:" + data[position].image_url)
         holder.view.txtDescription.text = data[position].description
-        holder.view.txtPrice.text = context.getString(R.string.price, data[position].price)
+        holder.view.txtPrice.text = context.getString(R.string.price, data[position].price.toString())
         if (data[position].discount == 0)
             holder.view.lytDiscount.visibility = LinearLayout.GONE
         else {
             holder.view.txtListPrice.text =
-                context.getString(R.string.price, data[position].list_price)
+                context.getString(R.string.price, data[position].list_price.toString())
             holder.view.txtDiscount.text =
-                context.getString(R.string.discount, data[position].discount)
+                context.getString(R.string.discount, data[position].discount.toString())
             holder.view.txtListPrice.setPaintFlags(holder.view.txtListPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
         }
 
@@ -59,7 +59,7 @@ class ProductListRecyclerViewAdapter(
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private val myImageView: ImageView = itemView.findViewById<ImageView>(R.id.imgProduct)
-        private val TAG = ProductListRecyclerViewAdapter.ViewHolder::class.java.simpleName
+        private val TAG = ViewHolder::class.java.simpleName
 
         fun updateImageWithUrl(url: String) {
             Picasso.with(itemView.context).load(url).into(myImageView,
