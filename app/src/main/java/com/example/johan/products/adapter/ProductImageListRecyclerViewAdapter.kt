@@ -10,6 +10,7 @@ import com.example.johan.products.R
 import com.example.johan.products.response.Image
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.layout_product_image_list_view_holder.view.*
 
 
 class ProductImageListRecyclerViewAdapter(
@@ -28,17 +29,10 @@ class ProductImageListRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.updateImageWithUrl("http:" + data[position].url)
+        Picasso.get().load("http:" + data[position].url).into(holder.view.imgListImageProduct)
 
     override fun getItemCount() = data.size
 
     //internal objects
-    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        private val TAG = ViewHolder::class.java.simpleName
-        private val myImageView: ImageView =
-            itemView.findViewById<ImageView>(R.id.imgListImageProduct)
-
-        fun updateImageWithUrl(url: String) =
-            Picasso.get().load(url).into(myImageView)
-    }
+    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view)
 }
