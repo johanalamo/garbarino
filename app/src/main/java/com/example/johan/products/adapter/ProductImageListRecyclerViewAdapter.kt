@@ -39,16 +39,6 @@ class ProductImageListRecyclerViewAdapter(
             itemView.findViewById<ImageView>(R.id.imgListImageProduct)
 
         fun updateImageWithUrl(url: String) =
-            Picasso.with(itemView.context).load(url).into(myImageView,
-                object
-                    : Callback {
-                    override fun onSuccess() {}
-                    override fun onError() {
-                        Log.d(
-                            TAG,
-                            "*********************************************ListImage: error on internet connection: " + url
-                        )
-                    }
-                })
+            Picasso.get().load(url).into(myImageView)
     }
 }
