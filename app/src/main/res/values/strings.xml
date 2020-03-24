@@ -4,6 +4,7 @@
     <string name="strComments">Comentarios</string>
 
     <string name="commentAuthor">Por %1$s</string>
+    <string name="by">Por</string>
     <string name="price">$ %1$s</string>
     <string name="priceDos">$</string>
     <string name="discount">%1$s%% OFF</string>

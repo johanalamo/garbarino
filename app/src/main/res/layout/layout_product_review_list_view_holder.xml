@@ -1,97 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
-        card_view:cardCornerRadius="2dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+                name="position"
+                type="Integer" />
+        <variable
+                name="review"
+                type="com.example.johan.products.response.Review" />
+    </data>
 
-    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/linearLayoutOneProduct"
+    <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
+            card_view:cardCornerRadius="2dp">
 
-        <LinearLayout
+
+        <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/linearLayoutOneProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
-            <android.support.constraint.ConstraintLayout
+            <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                <RatingBar
-                        android:id="@+id/rtbarProductReview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/sizeHeightStarProductReviews"
-                        android:isIndicator="true"
-                        android:numStars="5"
-                        android:scaleX="0.3"
-                        android:scaleY="0.3"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <RatingBar
+                            android:id="@+id/rtbarProductReview"
+                            android:rating="@{ review.rating }"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/sizeHeightStarProductReviews"
+                            android:isIndicator="true"
+                            android:numStars="5"
+                            android:scaleX="0.3"
+                            android:scaleY="0.3"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                            android:id="@+id/txtReviewStars"
+                            style="@style/stlReviewStars"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{ review.rating.toString() }"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="@+id/rtbarProductReview"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                            android:id="@+id/txtNumReview"
+                            style="@style/stlReviewStars"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{ position.toString() }"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="@+id/rtbarProductReview"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                            android:id="@+id/txtReviewDate"
+                            style="@style/stlReviewDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{ review.submissionTime.subSequence(0, 10) }'
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
 
                 <TextView
-                        android:id="@+id/txtReviewStars"
-                        style="@style/stlReviewStars"
+                        android:id="@+id/txtReviewTitle"
+                        style="@style/stlReviewTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="@+id/rtbarProductReview"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:text="@{ review.title }" />
 
                 <TextView
-                        android:id="@+id/txtNumReview"
-                        style="@style/stlReviewStars"
+                        android:id="@+id/txtReviewDescription"
+                        style="@style/stlReviewDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="@+id/rtbarProductReview"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:text="@{ review.reviewText }" />
 
                 <TextView
-                        android:id="@+id/txtReviewDate"
-                        style="@style/stlReviewDate"
+                        android:id="@+id/txtReviewNickname"
+                        style="@style/stlReviewNickname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-            </android.support.constraint.ConstraintLayout>
+                        android:text='@{ @string/by + " " + review.userNickname  }' />
 
-            <TextView
-                    android:id="@+id/txtReviewTitle"
-                    style="@style/stlReviewTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-
-            <TextView
-                    android:id="@+id/txtReviewDescription"
-                    style="@style/stlReviewDescription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-
-            <TextView
-                    android:id="@+id/txtReviewNickname"
-                    style="@style/stlReviewNickname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-
-            <Space
-                    android:layout_width="@dimen/threeSep"
-                    android:layout_height="0dp" />
+                <Space
+                        android:layout_width="@dimen/threeSep"
+                        android:layout_height="0dp" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
+</layout>
