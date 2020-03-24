@@ -3,12 +3,9 @@
 
     <string name="strComments">Comentarios</string>
 
-    <string name="commentAuthor">Por %1$s</string>
     <string name="by">Por</string>
-    <string name="price">$ %1$s</string>
-    <string name="priceDos">$</string>
-    <string name="discount">%1$s%% OFF</string>
-    <string name="discountDos">% OFF</string>
+    <string name="price">$</string>
+    <string name="discount">% OFF</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -80,13 +80,13 @@ class ProductDetailsActivity : AppCompatActivity() {
 
     fun showDetailsOnUi(res: ProductDetailsResponse) {
         txtDescription.text = res.description!!
-        txtPrice.text = getString(R.string.price, res.price)
+        txtPrice.text = getString(R.string.price) + " " + res.price
 
         if (res.discount == 0)
             lytDiscount.visibility = LinearLayout.GONE
         else {
-            txtListPrice.text = getString(R.string.price, res.listPrice.toString())
-            txtDiscount.text = getString(R.string.discount, res.discount.toString())
+            txtListPrice.text = getString(R.string.price) + " " + res.listPrice.toString()
+            txtDiscount.text = res.discount.toString() + getString(R.string.discount)
             txtListPrice.setPaintFlags(txtListPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
         }
         createRecyclerViewImageList(res.resources!!.images)

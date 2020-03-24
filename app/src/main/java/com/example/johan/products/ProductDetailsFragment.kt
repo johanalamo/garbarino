@@ -2,9 +2,7 @@ package com.example.johan.products
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Context
 import android.graphics.Paint
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -87,13 +85,13 @@ class ProductDetailsFragment : Fragment() {
 
     fun showDetailsOnUi(res: ProductDetailsResponse) {
         txtDescription.text = res.description!!
-        txtPrice.text = getString(R.string.price, res.price)
+        txtPrice.text = getString(R.string.price) + " " +  res.price
 
         if (res.discount == 0)
             lytDiscount.visibility = LinearLayout.GONE
         else {
-            txtListPrice.text = getString(R.string.price, res.listPrice)
-            txtDiscount.text = getString(R.string.discount, res.discount)
+            txtListPrice.text = getString(R.string.price) + " " + res.listPrice
+            txtDiscount.text = res.discount.toString() + getString(R.string.discount)
             txtListPrice.setPaintFlags(txtListPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
         }
         createRecyclerViewImageList(res.resources!!.images)
